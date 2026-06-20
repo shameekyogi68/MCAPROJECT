@@ -24,21 +24,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
+      - name: Build Web App (Static index.html)
         run: |
-          python -m venv .venv
-          source .venv/bin/activate
-          pip install -r requirements.txt
-
-      - name: Build Web App
-        run: |
-          source .venv/bin/activate
-          flet publish --base-url /${{ github.event.repository.name }}/ main.py
+          mkdir -p dist
+          cp index.html dist/
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3

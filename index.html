@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScriptWorks Suite – From Script to Screen</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #030307;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 32px 32px;
+            color: #f4f4f5;
+        }
+        /* Custom glassmorphic cards */
+        .glass-card {
+            background: linear-gradient(135deg, rgba(20, 20, 35, 0.4) 0%, rgba(10, 10, 18, 0.6) 100%);
+            backdrop-filter: blur(24px) saturate(1.2);
+            -webkit-backdrop-filter: blur(24px) saturate(1.2);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .glass-card-hover-sp:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(167, 78, 198, 0.3);
+            box-shadow: 0 20px 40px rgba(167, 78, 198, 0.12), 0 0 25px rgba(106, 72, 187, 0.08);
+        }
+
+        .glass-card-hover-sf:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.12), 0 0 25px rgba(99, 102, 241, 0.08);
+        }
+        
+        .glass-card-hover-generic:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        @keyframes float-reverse {
+            0%, 100% { transform: translateY(0px) scale(1.05); }
+            50% { transform: translateY(20px) scale(1); }
+        }
+        .blob-1 {
+            animation: float-slow 15s ease-in-out infinite;
+        }
+        .blob-2 {
+            animation: float-reverse 15s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen overflow-x-hidden font-sans">
+
+    <!-- Background glowing blobs -->
+    <div class="absolute w-[700px] h-[700px] rounded-full blur-[200px] pointer-events-none bg-gradient-to-r from-indigo-500/20 to-purple-600/10 -left-[250px] -top-[150px] blob-1 z-0"></div>
+    <div class="absolute w-[700px] h-[700px] rounded-full blur-[200px] pointer-events-none bg-gradient-to-r from-rose-500/15 to-amber-600/10 -right-[250px] top-[250px] blob-2 z-0"></div>
+
+    <div class="relative z-10 w-full flex flex-col items-center">
+        <!-- 1. Sticky Header Navigation -->
+        <header class="w-full sticky top-0 backdrop-blur-md bg-[#030307]/70 border-b border-white/5 py-4 px-6 z-50 flex justify-center">
+            <div class="w-full max-w-[1200px] flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.reload()">
+                    <span class="material-icons text-indigo-400 text-3xl">auto_stories</span>
+                    <div class="flex flex-col">
+                        <span class="text-base font-black font-outfit text-white tracking-widest leading-none">SCRIPTWORKS</span>
+                        <span class="text-[9px] font-bold text-indigo-400 font-outfit tracking-widest">CREATIVE SUITE</span>
+                    </div>
+                </div>
+                
+                <!-- Nav Links & Buttons -->
+                <nav class="flex items-center gap-8 text-sm font-bold text-neutral-400 font-outfit">
+                    <a href="#pipeline" class="hover:text-white transition">Pipeline</a>
+                    <a href="#features" class="hover:text-white transition">Features</a>
+                    <a href="https://scriptpulse-app.streamlit.app" target="_blank" class="border border-[#6A48BB]/40 hover:border-[#6A48BB] hover:-translate-y-0.5 text-[#A74EC6] px-4 py-2 rounded-xl transition-all duration-300">Launch ScriptPulse</a>
+                    <a href="https://sceneforge-aqua-ocean.reflex.run" target="_blank" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:-translate-y-0.5 text-white px-4 py-2 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.3)]">Launch SceneForge</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- 2. Hero Section -->
+        <section class="w-full max-w-[950px] flex flex-col items-center text-center gap-6 py-24 px-6 mt-4">
+            <span class="text-[10px] font-bold text-indigo-400 bg-indigo-500/10 px-4 py-1.5 border border-indigo-500/35 rounded-full font-outfit tracking-widest">INTEGRATED NARRATIVE CORE</span>
+            <h1 class="text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight font-outfit mt-4 leading-none">From Script to Screen.</h1>
+            <h2 class="text-5xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-amber-500 tracking-tight font-outfit leading-none mt-2">Seamlessly.</h2>
+            <p class="text-base text-[#A3A0B3] max-w-[720px] mt-6 leading-relaxed">Connecting screenplay pacing with grounded research intelligence. Analyze narrative mechanics with ScriptPulse, and query production archives with SceneForge.</p>
+        </section>
+
+        <!-- 3. Application Cards Grid -->
+        <section class="w-full max-w-[1200px] gap-8 grid grid-cols-1 md:grid-cols-2 px-6 mt-8">
+            <!-- ScriptPulse Card -->
+            <div class="glass-card glass-card-hover-sp p-8 rounded-[32px] gap-6 flex flex-col justify-between h-[360px] cursor-pointer" onclick="window.open('https://scriptpulse-app.streamlit.app', '_blank')">
+                <div class="flex flex-col gap-4">
+                    <div class="w-full flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2.5 rounded-2xl bg-[#A74EC6]/10 border border-[#A74EC6]/25 flex items-center justify-center">
+                                <span class="material-icons text-[#A74EC6] text-xl">analytics</span>
+                            </div>
+                            <span class="text-2xl font-extrabold text-white font-outfit">ScriptPulse</span>
+                        </div>
+                        <span class="text-[9px] font-bold text-[#A74EC6] bg-[#A74EC6]/10 px-2.5 py-1 border border-[#A74EC6]/25 rounded-full font-outfit tracking-wider">AI STORY INTEL</span>
+                    </div>
+                    <p class="text-xs md:text-sm text-[#A3A0B3] leading-relaxed mt-2">Analyze screenplay pacing and attentional flow curves using a 7-agent story intelligence pipeline. Calibrate genre pacing baselines, track character dynamics, and audit scene economy for trim candidates.</p>
+                </div>
+                <div class="w-full flex justify-between items-center border-t border-white/5 pt-4">
+                    <span class="text-xs font-bold text-[#A74EC6] font-outfit">Launch Application</span>
+                    <span class="material-icons text-[#A74EC6] text-sm">open_in_new</span>
+                </div>
+            </div>
+
+            <!-- SceneForge Card -->
+            <div class="glass-card glass-card-hover-sf p-8 rounded-[32px] gap-6 flex flex-col justify-between h-[360px] cursor-pointer" onclick="window.open('https://sceneforge-aqua-ocean.reflex.run', '_blank')">
+                <div class="flex flex-col gap-4">
+                    <div class="w-full flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2.5 rounded-2xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center">
+                                <span class="material-icons text-indigo-400 text-xl">forum</span>
+                            </div>
+                            <span class="text-2xl font-extrabold text-white font-outfit">SceneForge</span>
+                        </div>
+                        <span class="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 px-2.5 py-1 border border-indigo-500/25 rounded-full font-outfit tracking-wider">RAG CHATBOT</span>
+                    </div>
+                    <p class="text-xs md:text-sm text-[#A3A0B3] leading-relaxed mt-2">Query screenplays, books, and reference PDFs securely with zero hallucinations. Features hybrid vector similarity/keyword search, Mem0 cross-session memory, and grounded inline citations with hoverable source tooltips.</p>
+                </div>
+                <div class="w-full flex justify-between items-center border-t border-white/5 pt-4">
+                    <span class="text-xs font-bold text-indigo-400 font-outfit">Launch Application</span>
+                    <span class="material-icons text-indigo-400 text-sm">open_in_new</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Pipeline Section -->
+        <section id="pipeline" class="w-full max-w-[1200px] bg-[#0E0F19]/40 border border-[#1E2235]/40 rounded-[32px] p-8 md:p-12 gap-10 flex flex-col mt-28 px-6 relative overflow-hidden">
+            <div class="w-full flex flex-col items-center text-center gap-2">
+                <span class="text-[10px] font-bold text-rose-500 font-outfit tracking-widest">THE PIPELINE</span>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-white font-outfit tracking-tight">Unified Script-to-Stage Workflow</h3>
+                <p class="text-xs md:text-sm text-[#A3A0B3] max-w-[550px] mt-1 leading-relaxed">ScriptWorks Suite links pre-production stages together. No manual translation — just a fluid creative pipeline.</p>
+            </div>
+            
+            <div class="w-full gap-6 grid grid-cols-1 md:grid-cols-3 mt-4">
+                <!-- Step 1 -->
+                <div class="bg-white/[0.01] p-6 rounded-2xl border border-white/5 gap-3 flex flex-col glass-card-hover-generic transition-all duration-300">
+                    <span class="text-3xl font-black text-rose-500 font-outfit">01</span>
+                    <h4 class="text-base font-bold text-white font-outfit">Narrative Profiling</h4>
+                    <p class="text-xs text-[#A3A0B3] leading-relaxed">Run script files through ScriptPulse to analyze tone, generate character breakdowns, and tag production locations.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-white/[0.01] p-6 rounded-2xl border border-white/5 gap-3 flex flex-col glass-card-hover-generic transition-all duration-300">
+                    <span class="text-3xl font-black text-indigo-400 font-outfit">02</span>
+                    <h4 class="text-base font-bold text-white font-outfit">Scene Composition</h4>
+                    <p class="text-xs text-[#A3A0B3] leading-relaxed">Upload script metadata to instantiate 3D scenes in SceneForge, automatically matching sets and staging properties.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-white/[0.01] p-6 rounded-2xl border border-white/5 gap-3 flex flex-col glass-card-hover-generic transition-all duration-300">
+                    <span class="text-3xl font-black text-[#FBBF24] font-outfit">03</span>
+                    <h4 class="text-base font-bold text-white font-outfit">Shot Design</h4>
+                    <p class="text-xs text-[#A3A0B3] leading-relaxed">Frame layouts, storyboard camera paths, animate character movements, and export sequence specs to production crews.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Features Grid Section -->
+        <section id="features" class="w-full max-w-[1200px] gap-12 flex flex-col mt-28 px-6 items-center">
+            <div class="w-full flex flex-col items-center text-center gap-2">
+                <span class="text-[10px] font-bold text-indigo-400 font-outfit tracking-widest">SYSTEM SYNCHRONIZATION</span>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-white font-outfit tracking-tight">Why Connect Script & Staging?</h3>
+            </div>
+                
+            <div class="w-full gap-6 grid grid-cols-1 md:grid-cols-2 mt-4">
+                <!-- Feature 1 -->
+                <div class="bg-white/[0.01] p-6 rounded-2xl border border-white/5 gap-4 flex items-start glass-card-hover-generic transition-all duration-300">
+                    <div class="p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center">
+                        <span class="material-icons text-indigo-400 text-sm">grid_view</span>
+                    </div>
+                    <div class="flex flex-col gap-1 flex-1">
+                        <h4 class="text-base font-bold text-white font-outfit">Automated Set Sizing</h4>
+                        <p class="text-xs text-[#A3A0B3] leading-relaxed">Parse descriptive scenes automatically to determine set scale, indoor/outdoor styles, and structural geometry.</p>
+                    </div>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-white/[0.01] p-6 rounded-2xl border border-white/5 gap-4 flex items-start glass-card-hover-generic transition-all duration-300">
+                    <div class="p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center">
+                        <span class="material-icons text-indigo-400 text-sm">people</span>
+                    </div>
+                    <div class="flex flex-col gap-1 flex-1">
+                        <h4 class="text-base font-bold text-white font-outfit">Character Casting Link</h4>
+                        <p class="text-xs text-[#A3A0B3] leading-relaxed">Sync character sheets mapping attributes, dialogue frequency, and character pairs directly into 3D templates.</p>
+                    </div>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-white/[0.01] p-6 rounded-2xl border border-white/5 gap-4 flex items-start glass-card-hover-generic transition-all duration-300">
+                    <div class="p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center">
+                        <span class="material-icons text-indigo-400 text-sm">wb_sunny</span>
+                    </div>
+                    <div class="flex flex-col gap-1 flex-1">
+                        <h4 class="text-base font-bold text-white font-outfit">Contextual Lighting Setup</h4>
+                        <p class="text-xs text-[#A3A0B3] leading-relaxed">Scene time-of-day and weather profiles are matched with skybox shaders, sun coordinates, and ambient moods.</p>
+                    </div>
+                </div>
+                <!-- Feature 4 -->
+                <div class="bg-white/[0.01] p-6 rounded-2xl border border-white/5 gap-4 flex items-start glass-card-hover-generic transition-all duration-300">
+                    <div class="p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center">
+                        <span class="material-icons text-indigo-400 text-sm">videocam</span>
+                    </div>
+                    <div class="flex flex-col gap-1 flex-1">
+                        <h4 class="text-base font-bold text-white font-outfit">Shot-to-Text Mapping</h4>
+                        <p class="text-xs text-[#A3A0B3] leading-relaxed">Associate virtual camera positions, focal lengths, and camera directions directly to specific script lines.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Footer Section -->
+        <footer class="w-full max-w-[1200px] mt-28 px-6 flex flex-col gap-0">
+            <hr class="border-white/5 w-full">
+            <div class="w-full py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
+                <span class="font-outfit">© 2026 ScriptWorks Suite. All rights reserved.</span>
+                <div class="flex items-center gap-4">
+                    <a href="https://scriptpulse-app.streamlit.app" target="_blank" class="hover:text-white transition">ScriptPulse</a>
+                    <span class="text-neutral-700">•</span>
+                    <a href="https://sceneforge-aqua-ocean.reflex.run" target="_blank" class="hover:text-white transition">SceneForge</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
