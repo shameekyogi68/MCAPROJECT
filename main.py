@@ -104,7 +104,7 @@ ui.add_head_html("""
             inset: 0;
             border-radius: 28px;
             padding: 1.5px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -113,35 +113,46 @@ ui.add_head_html("""
             z-index: 10;
         }
 
-        /* Card Spotlight Hover effects */
-        .gradient-border-card-sp:hover::before {
-            background: linear-gradient(135deg, rgba(167, 78, 198, 0.6), rgba(236, 72, 153, 0.15));
+        /* Card Spotlight Coordinates Config */
+        .gradient-border-card-sp {
+            --spotlight-radius: 200px;
+            --spotlight-color: rgba(167, 78, 198, 0.08);
+            --border-hover-color: rgba(167, 78, 198, 0.85);
+            --border-hover-bg: rgba(236, 72, 153, 0.08);
         }
-        .gradient-border-card-sp:hover {
-            transform: translateY(-6px) scale(1.005);
-            box-shadow: 0 25px 50px -12px rgba(167, 78, 198, 0.15), 0 0 30px -5px rgba(106, 72, 187, 0.08);
-            background: linear-gradient(135deg, rgba(25, 20, 45, 0.4) 0%, rgba(10, 8, 20, 0.6) 100%);
+        .gradient-border-card-sf {
+            --spotlight-radius: 200px;
+            --spotlight-color: rgba(99, 102, 241, 0.08);
+            --border-hover-color: rgba(99, 102, 241, 0.85);
+            --border-hover-bg: rgba(6, 182, 212, 0.08);
+        }
+        .gradient-border-card-generic {
+            --spotlight-radius: 160px;
+            --spotlight-color: rgba(255, 255, 255, 0.04);
+            --border-hover-color: rgba(255, 255, 255, 0.28);
+            --border-hover-bg: rgba(255, 255, 255, 0.02);
         }
 
-        .gradient-border-card-sf:hover::before {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.6), rgba(6, 182, 212, 0.15));
+        /* Mouse-spotlight border glow */
+        .gradient-border-card:hover::before {
+            background: radial-gradient(circle var(--spotlight-radius) at var(--x, 0px) var(--y, 0px), var(--border-hover-color), var(--border-hover-bg) 80%);
+        }
+
+        /* Card Hover transformations */
+        .gradient-border-card-sp:hover {
+            transform: translateY(-6px) scale(1.005);
+            box-shadow: 0 30px 60px -15px rgba(167, 78, 198, 0.18), 0 0 40px -10px rgba(106, 72, 187, 0.1);
+            background: linear-gradient(135deg, rgba(25, 20, 45, 0.45) 0%, rgba(10, 8, 20, 0.65) 100%);
         }
         .gradient-border-card-sf:hover {
             transform: translateY(-6px) scale(1.005);
-            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.15), 0 0 30px -5px rgba(6, 182, 212, 0.08);
-            background: linear-gradient(135deg, rgba(15, 20, 45, 0.4) 0%, rgba(5, 8, 22, 0.6) 100%);
-        }
-
-        .gradient-border-card-generic::before {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
-        }
-        .gradient-border-card-generic:hover::before {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.03));
+            box-shadow: 0 30px 60px -15px rgba(99, 102, 241, 0.18), 0 0 40px -10px rgba(6, 182, 212, 0.1);
+            background: linear-gradient(135deg, rgba(15, 20, 45, 0.45) 0%, rgba(5, 8, 22, 0.65) 100%);
         }
         .gradient-border-card-generic:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-            background: rgba(25, 25, 35, 0.4);
+            box-shadow: 0 25px 50px -20px rgba(0, 0, 0, 0.6);
+            background: rgba(25, 25, 35, 0.45);
         }
 
         /* SVG Line drawing dash offset animation */
@@ -154,11 +165,21 @@ ui.add_head_html("""
             animation: draw 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
+        /* Custom sonar ping animation for SVG midpoint Climax */
+        @keyframes sonar {
+            0% { r: 4px; opacity: 1; }
+            100% { r: 22px; opacity: 0; }
+        }
+        .sonar-ring {
+            transform-origin: 400px 30px;
+            animation: sonar 2.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+        }
+
         /* Spotlight radial background circle follow JS */
         .spotlight-element {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle 120px at var(--x, 0px) var(--y, 0px), rgba(255, 255, 255, 0.04), transparent 80%);
+            background: radial-gradient(circle var(--spotlight-radius, 150px) at var(--x, -9999px) var(--y, -9999px), var(--spotlight-color, rgba(255, 255, 255, 0.03)), transparent 80%);
             opacity: 0;
             transition: opacity 0.3s;
             pointer-events: none;
@@ -220,8 +241,12 @@ ui.add_head_html("""
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
-                    card.querySelector('.spotlight-element')?.style.setProperty('--x', `${x}px`);
-                    card.querySelector('.spotlight-element')?.style.setProperty('--y', `${y}px`);
+                    card.style.setProperty('--x', `${x}px`);
+                    card.style.setProperty('--y', `${y}px`);
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.setProperty('--x', `-9999px`);
+                    card.style.setProperty('--y', `-9999px`);
                 });
             });
         }
@@ -412,13 +437,24 @@ def index():
                                             <stop offset="50%" stop-color="#f43f5e"/>
                                             <stop offset="100%" stop-color="#fbbf24"/>
                                         </linearGradient>
+                                        <!-- Neon Line Glow filter -->
+                                        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feGaussianBlur stdDeviation="4" result="blur" />
+                                            <feMerge>
+                                                <feMergeNode in="blur" />
+                                                <feMergeNode in="SourceGraphic" />
+                                            </feMerge>
+                                        </filter>
                                     </defs>
                                     
                                     <path d="M 50 200 C 150 80, 200 240, 300 120 C 400 30, 450 180, 550 90 C 650 30, 700 130, 750 160 L 750 200 L 50 200 Z" fill="url(#chartGrad)"/>
+                                    <!-- Neon Glow Path -->
+                                    <path class="pulse-path" d="M 50 200 C 150 80, 200 240, 300 120 C 400 30, 450 180, 550 90 C 650 30, 700 130, 750 160" stroke="url(#chartLineGrad)" stroke-width="8" stroke-linecap="round" opacity="0.3" filter="url(#glow)"/>
+                                    <!-- Foreground Path -->
                                     <path class="pulse-path" d="M 50 200 C 150 80, 200 240, 300 120 C 400 30, 450 180, 550 90 C 650 30, 700 130, 750 160" stroke="url(#chartLineGrad)" stroke-width="3" stroke-linecap="round"/>
                                     
                                     <g class="cursor-pointer group">
-                                        <circle cx="400" cy="30" r="6" fill="#f43f5e" class="animate-ping" style="animation-duration: 3s;"></circle>
+                                        <circle cx="400" cy="30" r="4" fill="#f43f5e" class="sonar-ring" opacity="0.8"></circle>
                                         <circle cx="400" cy="30" r="5" fill="#f43f5e" stroke="#fff" stroke-width="1.5"></circle>
                                     </g>
                                     <g class="cursor-pointer">
@@ -492,24 +528,24 @@ def index():
                                             ui.element('span').classes('material-icons text-sm').text = 'smart_toy'
                                         
                                         ai_msg_html = """
-                                        <div class="bg-white/[0.03] border border-white/5 text-neutral-300 rounded-2xl rounded-tl-none px-4 py-2.5 max-w-[85%] leading-relaxed">
+                                        <div class="bg-white/[0.03] border border-white/5 text-neutral-300 rounded-2xl rounded-tl-none px-4 py-2.5 max-w-[85%] leading-relaxed backdrop-blur-[12px]">
                                             Yes, amber-colored bulbs were authentic. Although neon glass tube setups were introduced in early 1924, they did not reach standard illicit underground lounges until late 1926
                                             
                                             <!-- Citation Popover -->
                                             <span class="relative group cursor-pointer inline-flex items-center gap-0.5 text-[10px] text-cyan-400 bg-cyan-950/45 border border-cyan-800/40 px-2 py-0.5 rounded ml-1 font-mono leading-none">
                                                 [Source: Speakeasy Arch - P.14]
-                                                <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 p-3.5 bg-slate-950/98 border border-slate-800 rounded-xl text-[10px] text-neutral-300 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 backdrop-blur-xl shadow-2xl z-50 leading-relaxed font-sans font-normal">
-                                                    <span class="text-cyan-400 font-bold block mb-1">Source Excerpt (Historical Archive)</span>
+                                                <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 p-3.5 bg-[#080810]/95 border border-cyan-500/25 rounded-xl text-[10px] text-neutral-300 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-50 leading-relaxed font-sans font-normal translate-y-2 group-hover:translate-y-0">
+                                                    <span class="text-cyan-400 font-bold block mb-1 text-xs">Source Excerpt (Historical Archive)</span>
                                                     "...Chicago basement lounges operated under strict dim-out guidelines. Bulbs were tinted amber using lacquer coats to dampen the light output..."
                                                 </span>
                                             </span>.
                                             For Act II Scene 8, I suggest swapping the "red neon glow" with "warm carbon filament spotlights" 
-                                            
+                                             
                                             <!-- Citation Popover 2 -->
                                             <span class="relative group cursor-pointer inline-flex items-center gap-0.5 text-[10px] text-indigo-400 bg-indigo-950/45 border border-indigo-800/40 px-2 py-0.5 rounded ml-1 font-mono leading-none">
                                                 [Source: Stage Lighting 1924]
-                                                <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 p-3.5 bg-slate-950/98 border border-slate-800 rounded-xl text-[10px] text-neutral-300 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 backdrop-blur-xl shadow-2xl z-50 leading-relaxed font-sans font-normal">
-                                                    <span class="text-indigo-400 font-bold block mb-1">Source Excerpt (Technical Manual)</span>
+                                                <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 p-3.5 bg-[#080810]/95 border border-indigo-500/25 rounded-xl text-[10px] text-neutral-300 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-50 leading-relaxed font-sans font-normal translate-y-2 group-hover:translate-y-0">
+                                                    <span class="text-indigo-400 font-bold block mb-1 text-xs">Source Excerpt (Technical Manual)</span>
                                                     "...The carbon-filament spotlight remained the fixture of choice for staging underground cabaret floors during the transition era..."
                                                 </span>
                                             </span>.
