@@ -254,7 +254,7 @@ def build_launcher_card(title: str, tag: str, desc: str, bullets: list, btn_text
                         
         with ui.row().classes(f'w-full justify-between items-center border-t border-white/5 pt-4 relative z-20 text-{accent_color}'):
             ui.label(btn_text).classes('text-xs font-bold font-outfit')
-            ui.element('span').classes('material-icons text-sm animate-pulse').content('open_in_new')
+            ui.element('span').classes('material-icons text-sm animate-pulse').text = 'open_in_new'
 
 def build_pipeline_card(step_num: str, title: str, desc: str, text_color: str):
     """Generates a pipeline step card in Python."""
@@ -262,7 +262,7 @@ def build_pipeline_card(step_num: str, title: str, desc: str, text_color: str):
         with ui.row().classes('w-full justify-between items-center'):
             ui.label(step_num).classes(f'text-4xl font-black text-{text_color} font-outfit')
             icon_map = {'01': 'analytics', '02': 'dataset', '03': 'videocam'}
-            ui.element('span').classes('material-icons text-neutral-600 text-base').content(icon_map.get(step_num, 'circle'))
+            ui.element('span').classes('material-icons text-neutral-600 text-base').text = icon_map.get(step_num, 'circle')
         ui.label(title).classes('text-base font-extrabold text-white font-outfit')
         ui.label(desc).classes('text-xs text-[#A3A0B3] leading-relaxed font-light')
 
@@ -270,7 +270,7 @@ def build_feature_card(icon_name: str, title: str, desc: str):
     """Generates a system feature card in Python."""
     with ui.element('div').classes('gradient-border-card gradient-border-card-generic p-6.5 gap-4.5 flex items-start transition-all duration-300 scroll-reveal'):
         with ui.element('div').classes('p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400 flex-shrink-0'):
-            ui.element('span').classes('material-icons text-base').content(icon_name)
+            ui.element('span').classes('material-icons text-base').text = icon_name
         with ui.column().classes('gap-1.5 grow'):
             ui.label(title).classes('text-base font-bold text-white font-outfit')
             ui.label(desc).classes('text-xs text-[#A3A0B3] leading-relaxed font-light')
@@ -299,7 +299,7 @@ def index():
             with ui.element('div').classes('w-full max-w-[1200px] flex justify-between items-center'):
                 # Logo
                 with ui.row().classes('items-center gap-2.5 cursor-pointer').on('click', lambda: ui.run_javascript("window.scrollTo({top: 0, behavior: 'smooth'})")):
-                    ui.element('span').classes('material-icons text-indigo-400 text-3xl select-none').content('auto_stories')
+                    ui.element('span').classes('material-icons text-indigo-400 text-3xl select-none').text = 'auto_stories'
                     with ui.column().classes('gap-0'):
                         ui.label('SCRIPTWORKS').classes('text-base font-black font-outfit text-white tracking-widest leading-none')
                         ui.label('CREATIVE SUITE').classes('text-[9px] font-bold text-indigo-400 font-outfit tracking-widest mt-0.5')
@@ -316,9 +316,11 @@ def index():
         # 3. Hero Section
         with ui.element('section').classes('w-full max-w-[1000px] flex flex-col items-center text-center gap-6 py-20 md:py-28 px-6 mt-4'):
             ui.label('INTEGRATED NARRATIVE CORE').classes('hero-animate text-[10px] font-extrabold text-indigo-400 bg-indigo-500/10 px-4 py-1.5 border border-indigo-500/30 rounded-full font-outfit tracking-widest uppercase select-none')
-            ui.element('h1').classes('hero-animate text-6xl md:text-8xl font-black text-white tracking-tighter font-outfit leading-none mt-2 select-none').html('From Script <br class="hidden sm:inline">to Screen.')
-            ui.element('h2').classes('hero-animate text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b99] via-[#ff7e40] to-[#ffbe1a] tracking-tight font-outfit leading-none mt-2 select-none filter drop-shadow-sm').content('Seamlessly.')
-            ui.element('p').classes('hero-animate text-base md:text-lg text-[#A3A0B3] max-w-[700px] mt-6 leading-relaxed font-light').html('Unifying story analytics with grounded spatial production archives. Run automated pacing checks with <span class="text-white font-medium">ScriptPulse</span>, and resolve world-building discrepancies with <span class="text-white font-medium">SceneForge</span>.')
+            with ui.element('h1').classes('hero-animate text-6xl md:text-8xl font-black text-white tracking-tighter font-outfit leading-none mt-2 select-none'):
+                ui.html('From Script <br class="hidden sm:inline">to Screen.')
+            ui.element('h2').classes('hero-animate text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b99] via-[#ff7e40] to-[#ffbe1a] tracking-tight font-outfit leading-none mt-2 select-none filter drop-shadow-sm').text = 'Seamlessly.'
+            with ui.element('p').classes('hero-animate text-base md:text-lg text-[#A3A0B3] max-w-[700px] mt-6 leading-relaxed font-light'):
+                ui.html('Unifying story analytics with grounded spatial production archives. Run automated pacing checks with <span class="text-white font-medium">ScriptPulse</span>, and resolve world-building discrepancies with <span class="text-white font-medium">SceneForge</span>.')
 
         # 4. Interactive Showcase Dashboard (Stateful Panel)
         with ui.element('section').classes('w-full max-w-[1200px] px-6 mb-16 relative scroll-reveal'):
@@ -337,14 +339,14 @@ def index():
                             .props('flat') \
                             .classes('flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg bg-white/5 text-white transition-all duration-300')
                         with sp_btn:
-                            ui.element('span').classes('material-icons text-sm text-[#d946ef]').content('analytics')
+                            ui.element('span').classes('material-icons text-sm text-[#d946ef]').text = 'analytics'
                             ui.label('ScriptPulse Dashboard')
 
                         sf_btn = ui.button(on_click=lambda: switch_tab('sf')) \
                             .props('flat') \
                             .classes('flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg text-neutral-400 hover:text-white transition-all duration-300')
                         with sf_btn:
-                            ui.element('span').classes('material-icons text-sm text-indigo-400').content('forum')
+                            ui.element('span').classes('material-icons text-sm text-indigo-400').text = 'forum'
                             ui.label('SceneForge RAG Workspace')
                             
                     ui.label('status: sandbox_active.env').classes('text-[10px] text-neutral-500 font-mono hidden md:block')
@@ -461,13 +463,13 @@ def index():
                                         with ui.column().classes('gap-0'):
                                             ui.label('Scene 14 (Prose Heavy)').classes('font-bold text-white font-outfit')
                                             ui.label('Recommend -120 words').classes('text-[10px] text-neutral-500 font-mono')
-                                        ui.element('span').classes('material-icons text-amber-500 text-sm').content('warning')
+                                        ui.element('span').classes('material-icons text-amber-500 text-sm').text = 'warning'
                                     # Scene 27
                                     with ui.row().classes('w-full justify-between items-center bg-white/[0.01] border border-white/5 px-3 py-2 rounded-xl text-xs hover:bg-white/[0.03] transition'):
                                         with ui.column().classes('gap-0'):
                                             ui.label('Scene 27 (Double Beat)').classes('font-bold text-white font-outfit')
                                             ui.label('Recommend cut redundancy').classes('text-[10px] text-neutral-500 font-mono')
-                                        ui.element('span').classes('material-icons text-rose-500 text-sm').content('error')
+                                        ui.element('span').classes('material-icons text-rose-500 text-sm').text = 'error'
 
                     # ── Pane 2: SceneForge Chatbot (Initially Hidden) ──
                     pane_sf = ui.element('div').classes('w-full grid grid-cols-1 lg:grid-cols-12 gap-8 transition-opacity duration-500 hidden').props('id="pane-sf"')
@@ -487,7 +489,7 @@ def index():
                                     # AI Message with Citation Popovers
                                     with ui.row().classes('w-full gap-3 items-start'):
                                         with ui.element('div').classes('p-2 h-7 w-7 rounded-lg bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400 flex-shrink-0 select-none'):
-                                            ui.element('span').classes('material-icons text-sm').content('smart_toy')
+                                            ui.element('span').classes('material-icons text-sm').text = 'smart_toy'
                                         
                                         ai_msg_html = """
                                         <div class="bg-white/[0.03] border border-white/5 text-neutral-300 rounded-2xl rounded-tl-none px-4 py-2.5 max-w-[85%] leading-relaxed">
@@ -519,13 +521,13 @@ def index():
                                 with ui.row().classes('w-full items-center gap-2 border-t border-white/5 pt-3'):
                                     ui.label('Type command or query references...').classes('bg-white/[0.02] border border-white/5 rounded-xl px-4 py-2 text-[11px] text-neutral-500 grow font-mono select-none')
                                     with ui.element('button').classes('h-8 w-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center hover:scale-[1.05] transition select-none'):
-                                        ui.element('span').classes('material-icons text-sm').content('send')
+                                        ui.element('span').classes('material-icons text-sm').text = 'send'
 
                         with ui.column().classes('lg:col-span-4 flex flex-col gap-5'):
                             # Mem0 Memory List
                             with ui.element('div').classes('bg-[#080812] border border-white/5 rounded-2xl p-5 flex flex-col gap-4 w-full'):
                                 with ui.row().classes('items-center gap-2'):
-                                    ui.element('span').classes('material-icons text-indigo-400 text-sm').content('memory')
+                                    ui.element('span').classes('material-icons text-indigo-400 text-sm').text = 'memory'
                                     ui.label('Mem0 Memory Store').classes('text-xs font-bold text-neutral-400 tracking-wider font-outfit uppercase')
                                 
                                 with ui.column().classes('w-full gap-2 font-mono text-[10px]'):
@@ -594,7 +596,7 @@ def index():
                 build_feature_card("videocam", "Shot-to-Text Mapping", "Bind staging cameras directly with lines of dialogue, generating active storyboards with automated view directions.")
 
         # 8. Footer Section
-        with ui.footer().classes('w-full max-w-[1200px] mt-32 px-6 bg-transparent text-[#f4f4f5] border-t border-white/5 flex flex-col gap-0 justify-center items-center'):
+        with ui.element('footer').classes('w-full max-w-[1200px] mt-32 px-6 bg-transparent text-[#f4f4f5] border-t border-white/5 flex flex-col gap-0 justify-center items-center'):
             with ui.row().classes('w-full py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-500'):
                 ui.label('© 2026 ScriptWorks Suite. All rights reserved.').classes('font-outfit')
                 with ui.row().classes('items-center gap-4'):
