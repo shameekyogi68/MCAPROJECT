@@ -140,11 +140,11 @@ ui.add_head_html("""
 
         /* Card Spotlight Hover effects */
         .gradient-border-card-sp:hover::before {
-            background: linear-gradient(135deg, rgba(167, 78, 198, 0.6), rgba(236, 72, 153, 0.15));
+            background: linear-gradient(135deg, rgba(155, 81, 224, 0.6), rgba(165, 109, 255, 0.15));
         }
         .gradient-border-card-sp:hover {
             transform: translateY(-6px) scale(1.005);
-            box-shadow: 0 25px 50px -12px rgba(167, 78, 198, 0.15), 0 0 30px -5px rgba(106, 72, 187, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(155, 81, 224, 0.15), 0 0 30px -5px rgba(155, 81, 224, 0.08);
             background: linear-gradient(135deg, rgba(25, 20, 45, 0.4) 0%, rgba(10, 8, 20, 0.6) 100%);
         }
 
@@ -292,10 +292,10 @@ ui.add_head_html("""
 def build_launcher_card(title: str, tag: str, desc: str, bullets: list, btn_text: str, url: str, accent_color: str, card_hover_class: str, icon_svg: str):
     """Generates a premium application launcher card in Python matching index.html."""
     if title == "ScriptPulse":
-        bg_class = "bg-[#A74EC6]/10"
-        border_class = "border-[#A74EC6]/25"
-        text_class = "text-[#d946ef]"
-        bullet_bg = "bg-[#d946ef]"
+        bg_class = "bg-[#9B51E0]/10"
+        border_class = "border-[#9B51E0]/25"
+        text_class = "text-[#A56DFF]"
+        bullet_bg = "bg-[#9B51E0]"
     else:
         bg_class = "bg-indigo-500/10"
         border_class = "border-indigo-500/25"
@@ -378,9 +378,9 @@ def index():
                     ui.link('Pipeline', '#pipeline').classes('text-neutral-400 hover:text-white no-underline transition duration-200')
                     ui.link('Features', '#features').classes('text-neutral-400 hover:text-white no-underline transition duration-200')
                     ui.link('Launch ScriptPulse', 'https://scriptpulse-app.streamlit.app', new_tab=True) \
-                        .classes('magnetic-btn border border-[#a74ec6]/30 text-[#d946ef] px-4.5 py-2 rounded-xl no-underline')
+                        .classes('bg-gradient-to-r from-[#9B51E0] to-[#A56DFF] text-white px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(155,81,224,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline')
                     ui.link('Launch SceneForge', 'https://sceneforge-aqua-ocean.reflex.run', new_tab=True) \
-                        .classes('magnetic-btn bg-gradient-to-r from-indigo-600 to-indigo-500 text-white px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(99,102,241,0.25)] no-underline')
+                        .classes('bg-gradient-to-r from-indigo-600 to-indigo-500 text-white px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(99,102,241,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline')
 
         # 3. Hero Section
         with ui.element('section').classes('w-full max-w-[1000px] flex flex-col items-center text-center gap-6 py-20 md:py-32 px-6'):
@@ -406,7 +406,7 @@ def index():
                     with ui.element('div').classes('flex items-center bg-white/[0.03] border border-white/5 p-1 rounded-xl') as tab_row:
                         sp_btn = ui.element('button').classes('tab-btn flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg bg-white/5 text-white transition-all duration-300').props('id="btn-sp"').on('click', lambda: switch_tab('sp'))
                         with sp_btn:
-                            with ui.element('span').classes('material-icons text-sm text-[#d946ef]'): ui.html('analytics')
+                            with ui.element('span').classes('material-icons text-sm text-[#A56DFF]'): ui.html('analytics')
                             with ui.element('span'): ui.html('ScriptPulse')
 
                         sf_btn = ui.element('button').classes('tab-btn flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg text-neutral-400 hover:text-white transition-all duration-300').props('id="btn-sf"').on('click', lambda: switch_tab('sf'))
@@ -452,7 +452,7 @@ def index():
                         with ui.element('div').classes('lg:col-span-8 flex flex-col gap-4'):
                             with ui.element('div').classes('flex justify-between items-end px-2'):
                                 with ui.element('div'):
-                                    with ui.element('span').classes('text-xs font-bold text-[#d946ef] tracking-widest font-outfit uppercase'): ui.html('Attentional Pacing Dynamics')
+                                    with ui.element('span').classes('text-xs font-bold text-[#A56DFF] tracking-widest font-outfit uppercase'): ui.html('Attentional Pacing Dynamics')
                                     with ui.element('h4').classes('text-xl font-bold mt-1 text-white'): ui.html('Act II Flow Diagnostics')
                                 with ui.element('span').classes('text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/25 px-2 py-0.5 rounded-full'): ui.html('SYNC_OK')
                             
@@ -469,12 +469,12 @@ def index():
                                 <svg class="w-full h-full" viewBox="0 0 800 220" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <defs>
                                         <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="0%" stop-color="#d946ef" stop-opacity="0.25"/>
-                                            <stop offset="100%" stop-color="#d946ef" stop-opacity="0"/>
+                                            <stop offset="0%" stop-color="#9B51E0" stop-opacity="0.25"/>
+                                            <stop offset="100%" stop-color="#9B51E0" stop-opacity="0"/>
                                         </linearGradient>
                                         <linearGradient id="chartLineGrad" x1="0" y1="0" x2="1" y2="0">
-                                            <stop offset="0%" stop-color="#a74ec6"/>
-                                            <stop offset="50%" stop-color="#f43f5e"/>
+                                            <stop offset="0%" stop-color="#9B51E0"/>
+                                            <stop offset="50%" stop-color="#FF3366"/>
                                             <stop offset="100%" stop-color="#fbbf24"/>
                                         </linearGradient>
                                     </defs>
@@ -484,14 +484,14 @@ def index():
                                     <path class="pulse-path" d="M 50 200 C 150 80, 200 240, 300 120 C 400 30, 450 180, 550 90 C 650 30, 700 130, 750 160" stroke="url(#chartLineGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
                                     
                                     <g class="cursor-pointer group">
-                                        <circle cx="400" cy="30" r="6" fill="#f43f5e" class="animate-ping" style="animation-duration: 3s;"></circle>
-                                        <circle cx="400" cy="30" r="5" fill="#f43f5e" stroke="#fff" stroke-width="1.5"></circle>
+                                        <circle cx="400" cy="30" r="6" fill="#FF3366" class="animate-ping" style="animation-duration: 3s;"></circle>
+                                        <circle cx="400" cy="30" r="5" fill="#FF3366" stroke="#fff" stroke-width="1.5"></circle>
                                     </g>
                                     <g class="cursor-pointer">
-                                        <circle cx="200" cy="200" r="5" fill="#10b981" stroke="#fff" stroke-width="1.5"></circle>
+                                        <circle cx="200" cy="200" r="5" fill="#00C853" stroke="#fff" stroke-width="1.5"></circle>
                                     </g>
                                     <g class="cursor-pointer">
-                                        <circle cx="550" cy="90" r="5" fill="#a74ec6" stroke="#fff" stroke-width="1.5"></circle>
+                                        <circle cx="550" cy="90" r="5" fill="#9B51E0" stroke="#fff" stroke-width="1.5"></circle>
                                     </g>
                                     
                                     <text x="50" y="215" fill="#4b5563" font-size="9" font-family="monospace">ACT I</text>
@@ -616,7 +616,7 @@ def index():
                 bullets=["7-Agent Agentic Pipeline", "Genre Pacing Calibration", "Character Tension Maps"],
                 btn_text="Launch Attentional Diagnostics",
                 url="https://scriptpulse-app.streamlit.app",
-                accent_color="#d946ef",
+                accent_color="#9B51E0",
                 card_hover_class="gradient-border-card-sp",
                 icon_svg='<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>'
             )
@@ -671,4 +671,4 @@ def index():
 # Start the NiceGUI server (uses environment variables for host/port if deploying to cloud)
 port = int(os.environ.get("PORT", 8550))
 host = os.environ.get("HOST", "0.0.0.0" if os.environ.get("PORT") else "127.0.0.1")
-ui.run(port=port, host=host, show=False)
+ui.run(port=port, host=host, show=True)
