@@ -671,4 +671,6 @@ def index():
 # Start the NiceGUI server (uses environment variables for host/port if deploying to cloud)
 port = int(os.environ.get("PORT", 8550))
 host = os.environ.get("HOST", "0.0.0.0" if os.environ.get("PORT") else "127.0.0.1")
-ui.run(port=port, host=host, show=True)
+show_browser = not os.environ.get("PORT")
+ui.run(port=port, host=host, show=show_browser)
+
