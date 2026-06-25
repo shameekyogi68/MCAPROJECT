@@ -531,7 +531,7 @@ def index():
                     ui.link('Launch ScriptPulse', 'https://scriptpulse-app.streamlit.app', new_tab=True) \
                         .classes('bg-gradient-to-r from-[#9B51E0] to-[#A56DFF] !text-white px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(155,81,224,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline font-outfit font-bold')
                     ui.link('Launch ScriptIQ', 'https://sceneforge-aqua-ocean.reflex.run', new_tab=True) \
-                        .classes('bg-gradient-to-r from-[#00F0FF] to-[#0072FF] !text-[#05080F] px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(0,240,255,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline font-sans font-bold')
+                        .classes('bg-gradient-to-r from-[#00F0FF] to-[#0072FF] !text-white px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(0,240,255,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline font-sans font-bold')
 
         # 3. Hero Section
         with ui.element('section').classes('w-full max-w-[1000px] flex flex-col items-center text-center gap-6 py-20 md:py-32 px-6'):
@@ -546,7 +546,7 @@ def index():
                 ui.link('Launch ScriptPulse', 'https://scriptpulse-app.streamlit.app', new_tab=True) \
                     .classes('bg-gradient-to-r from-[#9B51E0] to-[#A56DFF] !text-white px-6 py-3 rounded-xl font-bold shadow-[0_0_30px_rgba(155,81,224,0.3)] hover:scale-[1.05] transition-all duration-300 no-underline font-outfit')
                 ui.link('Launch ScriptIQ', 'https://sceneforge-aqua-ocean.reflex.run', new_tab=True) \
-                    .classes('bg-gradient-to-r from-[#00F0FF] to-[#0072FF] !text-[#05080F] px-6 py-3 rounded-xl font-bold shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:scale-[1.05] transition-all duration-300 no-underline font-sans')
+                    .classes('bg-gradient-to-r from-[#00F0FF] to-[#0072FF] !text-white px-6 py-3 rounded-xl font-bold shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:scale-[1.05] transition-all duration-300 no-underline font-sans')
 
         # 4. Interactive Showcase Dashboard (Stateful Panel)
         with ui.element('section').classes('w-full max-w-[1200px] px-6 mb-24 relative'):
