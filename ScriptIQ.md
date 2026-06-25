@@ -1,12 +1,12 @@
-# SceneForge — Project Documentation & Architectural Details
+# ScriptIQ — Project Documentation & Architectural Details
 
-SceneForge is a state-of-the-art, **RAG-powered film research chatbot** designed for filmmakers, screenwriters, and researchers to securely query screenplays, books, and reference PDFs. It delivers fully grounded, zero-hallucination answers backed by inline, hoverable citations, combining long-term contextual memory, hybrid search, and rate-limiting.
+ScriptIQ is a state-of-the-art, **RAG-powered film research chatbot** designed for filmmakers, screenwriters, and researchers to securely query screenplays, books, and reference PDFs. It delivers fully grounded, zero-hallucination answers backed by inline, hoverable citations, combining long-term contextual memory, hybrid search, and rate-limiting.
 
 ---
 
 ## 1. System Architecture
 
-SceneForge employs a decoupled, multi-tier architecture designed for low-latency operations and complete namespace isolation:
+ScriptIQ employs a decoupled, multi-tier architecture designed for low-latency operations and complete namespace isolation:
 
 ```mermaid
 graph TD
@@ -30,7 +30,7 @@ graph TD
 
 ## 2. Color Palette & UI Design System
 
-SceneForge uses a curated, premium dark-mode design system with high-fidelity glassmorphism, smooth animations, and neon/gradient accent markers:
+ScriptIQ uses a curated, premium dark-mode design system with high-fidelity glassmorphism, smooth animations, and neon/gradient accent markers:
 
 | Component | Target Color / Style | Code Representation / Usage |
 | :--- | :--- | :--- |
@@ -54,7 +54,7 @@ SceneForge uses a curated, premium dark-mode design system with high-fidelity gl
 ## 3. Technical Capabilities & Flowcharts
 
 ### 3.1 PDF Processing Pipeline
-When a user uploads a script or research document, SceneForge processes it asynchronously to ensure responsiveness:
+When a user uploads a script or research document, ScriptIQ processes it asynchronously to ensure responsiveness:
 
 ```
 PDF File Upload
@@ -82,7 +82,7 @@ Update Document status to 'ready'
 ```
 
 ### 3.2 RAG Chat & Hybrid Search
-To achieve maximum citation recall and eliminate hallucinations, SceneForge implements hybrid retrieval:
+To achieve maximum citation recall and eliminate hallucinations, ScriptIQ implements hybrid retrieval:
 
 ```
 User Query
@@ -220,7 +220,7 @@ $$;
 
 ## 5. Key Code Optimization Details
 
-SceneForge has been specifically optimized for the Gemini free tier limit and low-latency database queries:
+ScriptIQ has been specifically optimized for the Gemini free tier limit and low-latency database queries:
 
 1. **Supabase Client Thread-Safe Cache (`backend/auth.py`):**
    A custom cache (`ClientCache`) maintains established, token-authenticated connection objects. This prevents recreating clients and establishing fresh TCP handshakes for each API call.
@@ -240,7 +240,7 @@ SceneForge has been specifically optimized for the Gemini free tier limit and lo
 ## 6. Workspace File Directory Structure
 
 ```
-ScriptForge/
+ScriptIQ/
 ├── backend/
 │   ├── __init__.py
 │   ├── auth.py          # Signup, Login, token caches, rate limits
@@ -251,7 +251,7 @@ ScriptForge/
 │   ├── models.py        # Pydantic schemas
 │   ├── rag.py           # PyMuPDF processing, hybrid search, Gemini generate
 │   └── utils.py         # Utility stubs
-├── sceneforge/          # Reflex Web Application
+├── scriptiq/          # Reflex Web Application
 │   ├── __init__.py
 │   ├── pages/
 │   │   ├── callback.py  # Supabase auth redirect target
@@ -260,7 +260,7 @@ ScriptForge/
 │   │   ├── login.py     # Auth screen UI
 │   │   └── project.py   # RAG chat & documents panel
 │   ├── public/          # Static assets
-│   ├── sceneforge.py    # Main Reflex application orchestrator
+│   ├── scriptiq.py    # Main Reflex application orchestrator
 │   ├── state.py         # Reflex central reactive state logic
 │   └── styles.py        # Global style sheets (glassmorphic aesthetic CSS)
 ├── tests/               # Integrated Test Suite
@@ -268,7 +268,7 @@ ScriptForge/
 │   ├── test_auth.py     # Caching & Rate limit unit tests
 │   └── test_rag.py      # Chunker, prompt-building unit tests
 ├── scratch/             # E2E Verify Script
-│   └── verify_sceneforge.py
+│   └── verify_scriptiq.py
 ├── .env                 # API Keys
 ├── requirements.txt     # Python Dependencies
 ├── rxconfig.py          # Reflex Config
@@ -316,5 +316,5 @@ python -m unittest discover -s tests/
 ```
 To run the end-to-end integration verification script:
 ```bash
-python scratch/verify_sceneforge.py
+python scratch/verify_scriptiq.py
 ```

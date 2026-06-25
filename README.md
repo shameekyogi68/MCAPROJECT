@@ -14,4 +14,4 @@ A premium pre-production suite integrating narrative core diagnostics with groun
 
 ## Features
 - **ScriptPulse**: Attentional flow diagnostics, emotional curves, and dialogue density analysis.
-- **SceneForge**: Grounded pre-production research assistant utilizing RAG.
+- **ScriptIQ**: Grounded pre-production research assistant utilizing RAG.

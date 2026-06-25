@@ -7,9 +7,10 @@ ui.add_head_html("""
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
         @theme {
-            --font-sans: 'Inter', sans-serif;
+            --font-sans: 'Plus Jakarta Sans', 'Inter', sans-serif;
             --font-outfit: 'Outfit', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
+            --font-screenplay: 'Courier Prime', 'Courier New', monospace;
             
             /* Define the custom spacing values used in the HTML design */
             --spacing-4_5: 1.125rem;
@@ -21,7 +22,7 @@ ui.add_head_html("""
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Icon Libraries -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -38,9 +39,9 @@ ui.add_head_html("""
 
     <style>
         body {
-            background-color: #020205;
-            color: #f4f4f5;
-            font-family: 'Inter', sans-serif;
+            background-color: #05080F;
+            color: #E2E8F0;
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -55,8 +56,10 @@ ui.add_head_html("""
             text-decoration: none !important;
         }
 
+        .font-sans { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
         .font-outfit { font-family: 'Outfit', sans-serif; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .font-screenplay { font-family: 'Courier Prime', 'Courier New', monospace; }
 
         /* Mouse-tracking Grid Spotlight */
         .cyber-grid-container {
@@ -148,13 +151,13 @@ ui.add_head_html("""
             background: linear-gradient(135deg, rgba(25, 20, 45, 0.4) 0%, rgba(10, 8, 20, 0.6) 100%);
         }
 
-        .gradient-border-card-sf:hover::before {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.6), rgba(6, 182, 212, 0.15));
+        .gradient-border-card-siq:hover::before {
+            background: linear-gradient(135deg, #00F0FF, rgba(0, 114, 255, 0.3));
         }
-        .gradient-border-card-sf:hover {
+        .gradient-border-card-siq:hover {
             transform: translateY(-6px) scale(1.005);
-            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.15), 0 0 30px -5px rgba(6, 182, 212, 0.08);
-            background: linear-gradient(135deg, rgba(15, 20, 45, 0.4) 0%, rgba(5, 8, 22, 0.6) 100%);
+            box-shadow: 0 25px 50px -12px rgba(0, 240, 255, 0.25), 0 0 30px -5px rgba(0, 114, 255, 0.15);
+            background: linear-gradient(135deg, rgba(5, 8, 15, 0.75) 0%, rgba(10, 15, 25, 0.9) 100%);
         }
 
         .gradient-border-card-generic::before {
@@ -179,6 +182,116 @@ ui.add_head_html("""
             z-index: 1;
         }
         .gradient-border-card:hover .spotlight-element { opacity: 1; }
+
+        /* ScriptIQ Brand Kit CSS Utility Classes */
+        .glass-panel {
+            background: rgba(8, 12, 22, 0.85);
+            backdrop-filter: blur(6px) saturate(1.2);
+            -webkit-backdrop-filter: blur(6px) saturate(1.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-panel-glow {
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 240, 255, 0.05), inset 0 0 12px rgba(0, 240, 255, 0.02);
+            background: rgba(8, 12, 22, 0.85);
+            backdrop-filter: blur(6px) saturate(1.2);
+            -webkit-backdrop-filter: blur(6px) saturate(1.2);
+        }
+
+        .premium-input {
+            background: rgba(6, 9, 16, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.3s ease;
+        }
+        .premium-input:focus-within {
+            border-color: #00F0FF;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.18);
+        }
+
+        .cyber-button-hover {
+            transition: all 0.3s ease;
+        }
+        .cyber-button-hover:hover {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.45);
+            border-color: #00F0FF;
+        }
+
+        .search-highlight {
+            background-color: rgba(0, 240, 255, 0.18);
+            border-bottom: 1px solid #00F0FF;
+        }
+
+        /* ScriptPulse Brand Kit CSS Utility Classes */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03) !important;
+            backdrop-filter: blur(24px) !important;
+            -webkit-backdrop-filter: blur(24px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-radius: 24px !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .hardware-metric {
+            position: relative;
+        }
+        .hardware-metric::after {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%) !important;
+            pointer-events: none !important;
+            border-radius: inherit !important;
+        }
+
+        .scene-turn-row {
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-right: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+        }
+        .scene-turn-row:hover {
+            transform: translateX(4px);
+        }
+        .border-left-warning {
+            border-left: 3px solid #FF7043 !important;
+            background: rgba(255, 112, 67, 0.05) !important;
+        }
+        .border-left-warning:hover {
+            background: rgba(255, 112, 67, 0.08) !important;
+        }
+        .border-left-error {
+            border-left: 3px solid #FF3366 !important;
+            background: rgba(255, 51, 102, 0.05) !important;
+        }
+        .border-left-error:hover {
+            background: rgba(255, 51, 102, 0.08) !important;
+        }
+        .border-left-cyan {
+            border-left: 3px solid #55E0FF !important;
+            background: rgba(85, 224, 255, 0.05) !important;
+        }
+        .border-left-cyan:hover {
+            background: rgba(85, 224, 255, 0.08) !important;
+        }
+
+        @keyframes pulse-stroke {
+            0%, 100% { stroke-opacity: 0.85; filter: drop-shadow(0 0 2px rgba(155, 81, 224, 0.4)); }
+            50% { stroke-opacity: 1; filter: drop-shadow(0 0 8px rgba(155, 81, 224, 0.8)); }
+        }
+        .pulse-path {
+            animation: pulse-stroke 3s ease-in-out infinite;
+        }
 
         /* Hide initially for entrance animations */
         .hero-animate { opacity: 0; transform: translateY(30px) scale(0.95); }
@@ -296,6 +409,11 @@ def build_launcher_card(title: str, tag: str, desc: str, bullets: list, btn_text
         border_class = "border-[#9B51E0]/25"
         text_class = "text-[#A56DFF]"
         bullet_bg = "bg-[#9B51E0]"
+    elif title == "ScriptIQ":
+        bg_class = "bg-[#00F0FF]/10"
+        border_class = "border-[#00F0FF]/25"
+        text_class = "text-[#00F0FF]"
+        bullet_bg = "bg-[#00F0FF]"
     else:
         bg_class = "bg-indigo-500/10"
         border_class = "border-indigo-500/25"
@@ -339,7 +457,7 @@ def build_pipeline_card(step_num: str, title: str, desc: str, text_color: str):
 def build_feature_card(icon_name: str, title: str, desc: str):
     """Generates a system feature card in Python."""
     with ui.element('div').classes('gradient-border-card gradient-border-card-generic p-6.5 gap-4.5 flex items-start transition-all duration-300 scroll-reveal'):
-        with ui.element('div').classes('p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400 flex-shrink-0'):
+        with ui.element('div').classes('p-2.5 rounded-xl bg-[#00F0FF]/10 border border-[#00F0FF]/25 flex items-center justify-center text-[#00F0FF] flex-shrink-0'):
             with ui.element('span').classes('material-icons text-base'): ui.html(icon_name)
         with ui.element('div').classes('flex flex-col gap-1.5 grow'):
             with ui.element('h4').classes('text-base font-bold text-white font-outfit'): ui.html(title)
@@ -350,7 +468,7 @@ def build_feature_card(icon_name: str, title: str, desc: str):
 @ui.page('/')
 def index():
     # Remove default padding to make it a fullscreen cinematic landing page
-    ui.query('.nicegui-content').classes('relative overflow-x-hidden p-0 m-0 gap-0 w-full min-h-screen bg-[#020205] text-[#f4f4f5]')
+    ui.query('.nicegui-content').classes('relative overflow-x-hidden p-0 m-0 gap-0 w-full min-h-screen bg-[#05080F] text-[#E2E8F0]')
 
     # 1. Full viewport background grids and glowing blobs
     with ui.element('div').classes('cyber-grid-container absolute inset-0 w-full min-h-screen pointer-events-none z-0 overflow-hidden'):
@@ -368,10 +486,10 @@ def index():
             with ui.element('div').classes('w-full max-w-[1200px] flex justify-between items-center'):
                 # Logo
                 with ui.element('div').classes('flex items-center gap-2.5 cursor-pointer').on('click', lambda: ui.run_javascript("window.scrollTo({top: 0, behavior: 'smooth'})")):
-                    ui.element('span').classes('ti ti-auto-stories text-indigo-400 text-3xl')
+                    ui.element('span').classes('ti ti-apps text-[#00F0FF] text-3xl')
                     with ui.element('div').classes('flex flex-col'):
-                        with ui.element('span').classes('text-base font-black font-outfit text-white tracking-widest leading-none'): ui.html('SCRIPTWORKS')
-                        with ui.element('span').classes('text-[9px] font-bold text-indigo-400 font-outfit tracking-widest mt-0.5 uppercase'): ui.html('Creative Suite')
+                        with ui.element('span').classes('text-base font-black font-outfit text-white tracking-widest leading-none'): ui.html('SCRIPTSUITE')
+                        with ui.element('span').classes('text-[9px] font-bold text-neutral-400 font-outfit tracking-widest mt-0.5 uppercase'): ui.html('Unified Portal')
                 
                 # Navigation Link list
                 with ui.element('nav').classes('flex items-center gap-8 text-sm font-semibold text-neutral-400 font-outfit'):
@@ -379,17 +497,23 @@ def index():
                     ui.link('Features', '#features').classes('text-neutral-400 hover:text-white no-underline transition duration-200')
                     ui.link('Launch ScriptPulse', 'https://scriptpulse-app.streamlit.app', new_tab=True) \
                         .classes('bg-gradient-to-r from-[#9B51E0] to-[#A56DFF] text-white px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(155,81,224,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline')
-                    ui.link('Launch SceneForge', 'https://sceneforge-aqua-ocean.reflex.run', new_tab=True) \
-                        .classes('bg-gradient-to-r from-indigo-600 to-indigo-500 text-white px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(99,102,241,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline')
+                    ui.link('Launch ScriptIQ', 'https://scriptiq.reflex.run', new_tab=True) \
+                        .classes('bg-gradient-to-r from-[#00F0FF] to-[#0072FF] text-[#05080F] font-semibold px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(0,240,255,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline')
 
         # 3. Hero Section
         with ui.element('section').classes('w-full max-w-[1000px] flex flex-col items-center text-center gap-6 py-20 md:py-32 px-6'):
-            with ui.element('span').classes('hero-animate text-[10px] font-extrabold text-indigo-400 bg-indigo-500/10 px-4 py-1.5 border border-indigo-500/30 rounded-full font-outfit tracking-widest uppercase'): ui.html('Integrated Narrative Core')
+            with ui.element('span').classes('hero-animate text-[10px] font-extrabold text-[#00F0FF] bg-[#00F0FF]/10 px-4 py-1.5 border border-[#00F0FF]/30 rounded-full font-outfit tracking-widest uppercase'): ui.html('ScriptPulse & ScriptIQ')
             with ui.element('h1').classes('hero-animate text-6xl md:text-8xl font-black text-white tracking-tighter font-outfit leading-none mt-2'):
-                ui.html('From Script <br class="hidden sm:inline">to Screen.')
-            with ui.element('h2').classes('hero-animate text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ff5b99] via-[#ff7e40] to-[#ffbe1a] tracking-tight font-outfit leading-none mt-2'): ui.html('Seamlessly.')
+                ui.html('Story Analytics <br class="hidden sm:inline">& Grounded RAG.')
+            with ui.element('h2').classes('hero-animate text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#9B51E0] via-[#A56DFF] to-[#00F0FF] tracking-tight font-outfit leading-none mt-2'): ui.html('Two Apps, One Workspace.')
             with ui.element('p').classes('hero-animate text-base md:text-lg text-[#A3A0B3] max-w-[700px] mt-6 leading-relaxed font-light'):
-                ui.html('Unifying story analytics with grounded spatial production archives. Run automated pacing checks with <span class="text-white font-medium">ScriptPulse</span>, and resolve world-building discrepancies with <span class="text-white font-medium">SceneForge</span>.')
+                ui.html('Discover the next-generation suite for screenwriters and pre-production researchers. Leverage <span class="text-[#A56DFF] font-semibold">ScriptPulse</span> to track emotional tension, and deploy <span class="text-[#00F0FF] font-semibold">ScriptIQ</span> to query screenplay reference documents with zero hallucinations.')
+            
+            with ui.element('div').classes('hero-animate flex flex-wrap gap-4 justify-center mt-4'):
+                ui.link('Launch ScriptPulse', 'https://scriptpulse-app.streamlit.app', new_tab=True) \
+                    .classes('bg-gradient-to-r from-[#9B51E0] to-[#A56DFF] text-white px-6 py-3 rounded-xl font-bold shadow-[0_0_30px_rgba(155,81,224,0.3)] hover:scale-[1.05] transition-all duration-300 no-underline font-outfit')
+                ui.link('Launch ScriptIQ', 'https://scriptiq.reflex.run', new_tab=True) \
+                    .classes('bg-gradient-to-r from-[#00F0FF] to-[#0072FF] text-[#05080F] px-6 py-3 rounded-xl font-bold shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:scale-[1.05] transition-all duration-300 no-underline font-outfit')
 
         # 4. Interactive Showcase Dashboard (Stateful Panel)
         with ui.element('section').classes('w-full max-w-[1200px] px-6 mb-24 relative'):
@@ -409,10 +533,10 @@ def index():
                             with ui.element('span').classes('material-icons text-sm text-[#A56DFF]'): ui.html('analytics')
                             with ui.element('span'): ui.html('ScriptPulse')
 
-                        sf_btn = ui.element('button').classes('tab-btn flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg text-neutral-400 hover:text-white transition-all duration-300').props('id="btn-sf"').on('click', lambda: switch_tab('sf'))
-                        with sf_btn:
-                            with ui.element('span').classes('material-icons text-sm text-indigo-400'): ui.html('forum')
-                            with ui.element('span'): ui.html('SceneForge')
+                        siq_btn = ui.element('button').classes('tab-btn flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg text-neutral-400 hover:text-white transition-all duration-300').props('id="btn-siq"').on('click', lambda: switch_tab('siq'))
+                        with siq_btn:
+                            with ui.element('span').classes('material-icons text-sm text-[#00F0FF]'): ui.html('forum')
+                            with ui.element('span'): ui.html('ScriptIQ')
                             
                     with ui.element('div').classes('text-[10px] text-neutral-500 font-mono hidden md:block'): ui.html('status: active')
 
@@ -420,26 +544,26 @@ def index():
                 def switch_tab(tab_id: str):
                     if tab_id == 'sp':
                         sp_btn.classes('bg-white/5 text-white', remove='text-neutral-400')
-                        sf_btn.classes('text-neutral-400', remove='bg-white/5 text-white')
+                        siq_btn.classes('text-neutral-400', remove='bg-white/5 text-white')
                         ui.run_javascript("""
                             const paneSp = document.getElementById('pane-sp');
-                            const paneSf = document.getElementById('pane-sf');
-                            gsap.to(paneSf, { opacity: 0, scale: 0.95, duration: 0.3, onComplete: () => {
-                                paneSf.classList.add('hidden');
+                            const paneSiq = document.getElementById('pane-siq');
+                            gsap.to(paneSiq, { opacity: 0, scale: 0.95, duration: 0.3, onComplete: () => {
+                                paneSiq.classList.add('hidden');
                                 paneSp.classList.remove('hidden');
                                 gsap.fromTo(paneSp, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
                             }});
                         """)
                     else:
-                        sf_btn.classes('bg-white/5 text-white', remove='text-neutral-400')
+                        siq_btn.classes('bg-white/5 text-white', remove='text-neutral-400')
                         sp_btn.classes('text-neutral-400', remove='bg-white/5 text-white')
                         ui.run_javascript("""
                             const paneSp = document.getElementById('pane-sp');
-                            const paneSf = document.getElementById('pane-sf');
+                            const paneSiq = document.getElementById('pane-siq');
                             gsap.to(paneSp, { opacity: 0, scale: 0.95, duration: 0.3, onComplete: () => {
                                 paneSp.classList.add('hidden');
-                                paneSf.classList.remove('hidden');
-                                gsap.fromTo(paneSf, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
+                                paneSiq.classList.remove('hidden');
+                                gsap.fromTo(paneSiq, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
                             }});
                         """)
 
@@ -457,7 +581,7 @@ def index():
                                 with ui.element('span').classes('text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/25 px-2 py-0.5 rounded-full'): ui.html('SYNC_OK')
                             
                             chart_html = """
-                            <div class="w-full bg-[#080812] border border-white/5 rounded-2xl p-4 relative h-[260px] flex items-end">
+                            <div class="w-full glass-card p-4 relative h-[260px] flex items-end hardware-metric">
                                 <!-- Grid Lines -->
                                 <div class="absolute inset-0 p-4 flex flex-col justify-between pointer-events-none opacity-20">
                                     <div class="border-b border-dashed border-white/20 w-full h-0"></div>
@@ -475,7 +599,7 @@ def index():
                                         <linearGradient id="chartLineGrad" x1="0" y1="0" x2="1" y2="0">
                                             <stop offset="0%" stop-color="#9B51E0"/>
                                             <stop offset="50%" stop-color="#FF3366"/>
-                                            <stop offset="100%" stop-color="#fbbf24"/>
+                                            <stop offset="100%" stop-color="#55E0FF"/>
                                         </linearGradient>
                                     </defs>
                                     
@@ -494,14 +618,14 @@ def index():
                                         <circle cx="550" cy="90" r="5" fill="#9B51E0" stroke="#fff" stroke-width="1.5"></circle>
                                     </g>
                                     
-                                    <text x="50" y="215" fill="#4b5563" font-size="9" font-family="monospace">ACT I</text>
-                                    <text x="380" y="215" fill="#4b5563" font-size="9" font-family="monospace">ACT II CLIMAX</text>
-                                    <text x="700" y="215" fill="#4b5563" font-size="9" font-family="monospace">ACT III</text>
+                                    <text x="50" y="215" fill="#9E9E9E" font-size="9" font-family="Outfit" font-weight="700">ACT I</text>
+                                    <text x="380" y="215" fill="#9E9E9E" font-size="9" font-family="Outfit" font-weight="700">ACT II CLIMAX</text>
+                                    <text x="700" y="215" fill="#9E9E9E" font-size="9" font-family="Outfit" font-weight="700">ACT III</text>
                                 </svg>
                                 
                                 <div class="absolute left-[52%] top-[10%] bg-slate-950/90 border border-pink-500/30 rounded-lg p-2.5 backdrop-blur-md shadow-2xl flex flex-col gap-0.5 select-none transition-transform hover:scale-105 duration-200">
                                     <span class="text-[9px] font-bold text-rose-400 font-outfit uppercase">Wormhole Transit Peak</span>
-                                    <span class="text-[11px] text-white font-semibold">Tension Index: 96.8%</span>
+                                    <span class="text-[11px] text-white font-semibold font-outfit">Tension Index: 96.8%</span>
                                     <span class="text-[9px] text-[#A3A0B3] font-mono mt-0.5">Scene 45: Endurance Wormhole Entry</span>
                                 </div>
                             </div>
@@ -510,54 +634,54 @@ def index():
 
                         with ui.element('div').classes('lg:col-span-4 flex flex-col gap-5'):
                             # Diagnostics
-                            with ui.element('div').classes('bg-[#080812] border border-white/5 rounded-2xl p-5 flex flex-col gap-4 w-full'):
-                                with ui.element('span').classes('text-xs font-bold text-neutral-400 uppercase tracking-wider font-outfit'): ui.html('Attentional Diagnostics')
+                            with ui.element('div').classes('glass-card p-5 flex flex-col gap-4 w-full'):
+                                with ui.element('span').classes('text-xs font-bold text-[#9E9E9E] uppercase tracking-wider font-outfit'): ui.html('Attentional Diagnostics')
                                 with ui.element('div').classes('grid grid-cols-2 gap-3'):
-                                    with ui.element('div').classes('bg-white/[0.02] border border-white/5 p-3 rounded-xl flex flex-col text-center'):
-                                        with ui.element('span').classes('text-xs text-neutral-400'): ui.html('Pacing Balance')
-                                        with ui.element('span').classes('text-lg font-black text-rose-400 mt-1'): ui.html('78%')
-                                    with ui.element('div').classes('bg-white/[0.02] border border-white/5 p-3 rounded-xl flex flex-col text-center'):
-                                        with ui.element('span').classes('text-xs text-neutral-400'): ui.html('Attentional Density')
-                                        with ui.element('span').classes('text-lg font-black text-purple-400 mt-1'): ui.html('High')
+                                    with ui.element('div').classes('glass-card p-3 rounded-xl flex flex-col text-center hardware-metric'):
+                                        with ui.element('span').classes('text-xs text-[#9E9E9E]'): ui.html('Pacing Balance')
+                                        with ui.element('span').classes('text-lg font-black text-rose-400 mt-1 font-outfit'): ui.html('78%')
+                                    with ui.element('div').classes('glass-card p-3 rounded-xl flex flex-col text-center hardware-metric'):
+                                        with ui.element('span').classes('text-xs text-[#9E9E9E]'): ui.html('Attentional Density')
+                                        with ui.element('span').classes('text-lg font-black text-purple-400 mt-1 font-outfit'): ui.html('High')
                             
                             # Trim Candidates
-                            with ui.element('div').classes('bg-[#080812] border border-white/5 rounded-2xl p-5 flex flex-col gap-3 w-full'):
+                            with ui.element('div').classes('glass-card p-5 flex flex-col gap-3 w-full'):
                                 with ui.element('span').classes('text-xs font-bold text-rose-400 uppercase tracking-wider font-outfit'): ui.html('Story Audit: Trim Candidates')
                                 with ui.element('div').classes('flex flex-col gap-2.5 max-h-[140px] overflow-y-auto'):
                                     # Scene 12
-                                    with ui.element('div').classes('flex items-center justify-between bg-white/[0.01] border border-white/5 px-3 py-2 rounded-xl text-xs hover:bg-white/[0.03] transition'):
+                                    with ui.element('div').classes('flex items-center justify-between scene-turn-row border-left-warning px-3 py-2 rounded-xl text-xs'):
                                         with ui.element('div').classes('flex flex-col'):
                                             with ui.element('span').classes('font-bold text-white font-outfit'): ui.html('Scene 12 (Drone Chase)')
-                                            with ui.element('span').classes('text-[10px] text-neutral-500 font-mono'): ui.html('Recommend -80 words')
+                                            with ui.element('span').classes('text-[10px] text-[#9E9E9E] font-mono'): ui.html('Recommend -80 words')
                                         with ui.element('span').classes('material-icons text-amber-500 text-sm'): ui.html('warning')
                                     # Scene 42
-                                    with ui.element('div').classes('flex items-center justify-between bg-white/[0.01] border border-white/5 px-3 py-2 rounded-xl text-xs hover:bg-white/[0.03] transition'):
+                                    with ui.element('div').classes('flex items-center justify-between scene-turn-row border-left-error px-3 py-2 rounded-xl text-xs'):
                                         with ui.element('div').classes('flex flex-col'):
                                             with ui.element('span').classes('font-bold text-white font-outfit'): ui.html('Scene 42 (NASA Briefing)')
-                                            with ui.element('span').classes('text-[10px] text-neutral-500 font-mono'): ui.html('Recommend cut exposition')
+                                            with ui.element('span').classes('text-[10px] text-[#9E9E9E] font-mono'): ui.html('Recommend cut exposition')
                                         with ui.element('span').classes('material-icons text-rose-500 text-sm'): ui.html('error')
 
-                    # ── Pane 2: SceneForge Chatbot (Initially Hidden) ──
-                    pane_sf = ui.element('div').classes('pane w-full grid grid-cols-1 lg:grid-cols-12 gap-8 transition-all duration-500 opacity-0 scale-95 hidden').props('id="pane-sf"')
-                    with pane_sf:
+                    # ── Pane 2: ScriptIQ Chatbot (Initially Hidden) ──
+                    pane_siq = ui.element('div').classes('pane w-full grid grid-cols-1 lg:grid-cols-12 gap-8 transition-all duration-500 opacity-0 scale-95 hidden').props('id="pane-siq"')
+                    with pane_siq:
                         with ui.element('div').classes('lg:col-span-8 flex flex-col gap-4'):
                             with ui.element('div').classes('flex items-center gap-2 px-2'):
-                                ui.element('span').classes('w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block animate-pulse')
-                                with ui.element('span').classes('text-xs font-bold text-indigo-400 font-outfit tracking-widest uppercase'): ui.html('Grounded RAG Pipeline Session')
+                                ui.element('span').classes('w-2.5 h-2.5 rounded-full bg-[#00FF88] inline-block animate-pulse')
+                                with ui.element('span').classes('text-xs font-bold text-[#00F0FF] font-outfit tracking-widest uppercase'): ui.html('Grounded RAG Pipeline Session')
                             
-                            with ui.element('div').classes('w-full bg-[#080812] border border-white/5 rounded-2xl p-4 flex flex-col gap-4 min-h-[300px] justify-between'):
+                            with ui.element('div').classes('w-full glass-panel p-4 flex flex-col gap-4 min-h-[300px] justify-between'):
                                 with ui.element('div').classes('flex flex-col gap-3.5 text-xs'):
                                     # User Message
                                     with ui.element('div').classes('flex gap-3 justify-end'):
-                                        with ui.element('div').classes('bg-indigo-600 text-white rounded-2xl rounded-tr-none px-4 py-2.5 max-w-[80%] shadow-lg'): ui.html('Verify the wormhole stability. What does TARS say about the Endurance flight?')
+                                        with ui.element('div').classes('bg-gradient-to-r from-[#00F0FF] to-[#0072FF] text-[#05080F] font-semibold rounded-2xl rounded-tr-none px-4 py-2.5 max-w-[80%] shadow-lg'): ui.html('Verify the wormhole stability. What does TARS say about the Endurance flight?')
                                     
                                     # AI Message with Citation Popovers
                                     with ui.element('div').classes('flex gap-3'):
-                                        with ui.element('div').classes('p-2 h-7 w-7 rounded-lg bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400 flex-shrink-0 select-none'):
+                                        with ui.element('div').classes('p-2 h-7 w-7 rounded-lg bg-[#00F0FF]/10 border border-[#00F0FF]/25 flex items-center justify-center text-[#00F0FF] flex-shrink-0 select-none'):
                                             with ui.element('span').classes('material-icons text-sm'): ui.html('smart_toy')
                                         
                                         ai_msg_html = """
-                                        <div class="bg-white/[0.03] border border-white/5 text-neutral-300 rounded-2xl rounded-tl-none px-4 py-2.5 max-w-[85%] leading-relaxed">
+                                        <div class="glass-panel-glow text-neutral-300 rounded-2xl rounded-tl-none px-4 py-2.5 max-w-[85%] leading-relaxed font-sans">
                                             TARS reports that the stability of the wormhole near Saturn is 98.4%. He also notes that he has a 10% humor setting, meaning he will make jokes about their demise during the journey
                                             
                                             <!-- Citation Popover -->
@@ -565,17 +689,17 @@ def index():
                                                 [Source: Interstellar_Screenplay.pdf - P.68]
                                                 <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 p-3.5 bg-slate-950/98 border border-slate-800 rounded-xl text-[10px] text-neutral-300 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 backdrop-blur-xl shadow-2xl z-50 leading-relaxed font-sans font-normal">
                                                     <span class="text-cyan-400 font-bold block mb-1">Source Excerpt (Technical Manual)</span>
-                                                    "...TARS sits by the console. Cooper checks the wormhole coordinates. 'Is it stable, TARS?' TARS replies, 'Stability is 98.4%, Cooper. And I have a 10% humor setting, meaning I will make jokes about our demise.'..."
+                                                    <span class="font-screenplay">"...TARS sits by the console. Cooper checks the wormhole coordinates. '\''Is it stable, TARS?'\'' TARS replies, '\''Stability is 98.4%, Cooper. And I have a 10% humor setting, meaning I will make jokes about our demise.'\''..."</span>
                                                 </span>
                                             </span>.
                                             Additionally, the gravity anomalies detected in Murph's bedroom were organized like binary code
                                              
                                             <!-- Citation Popover 2 -->
-                                            <span class="relative group cursor-pointer inline-flex items-center gap-0.5 text-[10px] text-indigo-400 bg-indigo-950/45 border border-indigo-800/40 px-2 py-0.5 rounded ml-1 font-mono leading-none">
+                                            <span class="relative group cursor-pointer inline-flex items-center gap-0.5 text-[10px] text-[#00F0FF] bg-cyan-950/45 border border-cyan-800/40 px-2 py-0.5 rounded ml-1 font-mono leading-none">
                                                 [Source: Interstellar_Screenplay.pdf - P.1]
                                                 <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 p-3.5 bg-slate-950/98 border border-slate-800 rounded-xl text-[10px] text-neutral-300 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 backdrop-blur-xl shadow-2xl z-50 leading-relaxed font-sans font-normal">
-                                                    <span class="text-indigo-400 font-bold block mb-1">Source Excerpt (Historical Archive)</span>
-                                                    "...Murph, 10, watches dust fall in patterns. Cooper enters, smiling. 'It's a gravitational anomaly, Murph.' She frowns. 'It's a ghost, Dad. It's trying to talk to me.' Cooper checks the dust lanes. They are vertical, organized like binary code."
+                                                    <span class="text-[#00F0FF] font-bold block mb-1">Source Excerpt (Historical Archive)</span>
+                                                    <span class="font-screenplay">"...Murph, 10, watches dust fall in patterns. Cooper enters, smiling. '\''It'\''s a gravitational anomaly, Murph.'\'' She frowns. '\''It'\''s a ghost, Dad. It'\''s trying to talk to me.'\'' Cooper checks the dust lanes. They are vertical, organized like binary code."</span>
                                                 </span>
                                             </span>.
                                         </div>
@@ -584,15 +708,15 @@ def index():
                                 
                                 # Typing bar mockup
                                 with ui.element('div').classes('w-full flex items-center gap-2 border-t border-white/5 pt-3'):
-                                    with ui.element('div').classes('bg-white/[0.02] border border-white/5 rounded-xl px-4 py-2 text-[11px] text-neutral-500 grow font-mono select-none'): ui.html('Type command or query references...')
-                                    with ui.element('button').classes('h-8 w-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center hover:scale-[1.05] transition select-none'):
+                                    with ui.element('div').classes('premium-input rounded-xl px-4 py-2 text-[11px] text-neutral-500 grow font-mono select-none'): ui.html('Type command or query references...')
+                                    with ui.element('button').classes('cyber-button-hover h-8 w-8 rounded-xl bg-gradient-to-r from-[#00F0FF] to-[#0072FF] text-[#05080F] flex items-center justify-center hover:scale-[1.05] transition select-none'):
                                         with ui.element('span').classes('material-icons text-sm'): ui.html('send')
 
                         with ui.element('div').classes('lg:col-span-4 flex flex-col gap-5'):
                             # Mem0 Memory List
                             with ui.element('div').classes('bg-[#080812] border border-white/5 rounded-2xl p-5 flex flex-col gap-4 w-full'):
                                 with ui.element('div').classes('flex items-center gap-2'):
-                                    with ui.element('span').classes('material-icons text-indigo-400 text-sm'): ui.html('memory')
+                                    with ui.element('span').classes('material-icons text-[#00F0FF] text-sm'): ui.html('memory')
                                     with ui.element('span').classes('text-xs font-bold text-neutral-400 tracking-wider font-outfit uppercase'): ui.html('Mem0 Memory Store')
                                 
                                 with ui.element('div').classes('flex flex-col gap-2 font-mono text-[10px]'):
@@ -606,7 +730,7 @@ def index():
                                         ui.element('span').classes('w-1.5 h-1.5 rounded-full bg-pink-400 mt-1 select-none flex-shrink-0')
                                         with ui.element('span'): ui.html("Gravitational anomaly in Cooper's house manifests as vertical dust lanes representing binary code.")
 
-        # 5. Application Launchers Grid (ScriptPulse and SceneForge)
+        # 5. Application Launchers Grid (ScriptPulse and ScriptIQ)
         with ui.element('section').classes('w-full max-w-[1200px] gap-8 grid grid-cols-1 md:grid-cols-2 px-6 mt-12'):
             # ScriptPulse Launcher
             build_launcher_card(
@@ -620,49 +744,49 @@ def index():
                 card_hover_class="gradient-border-card-sp",
                 icon_svg='<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>'
             )
-            # SceneForge Launcher
+            # ScriptIQ Launcher
             build_launcher_card(
-                title="SceneForge",
+                title="ScriptIQ",
                 tag="RAG CHATBOT",
                 desc="Upload production reference guidelines, query scene specs, and extract spatial configurations with perfect grounding. Integrates character profile facts across prompts.",
                 bullets=["Hybrid Vector Similarity", "Cross-session Mem0 Store", "Inline Citations & Tooltips"],
                 btn_text="Launch Grounded Research",
-                url="https://sceneforge-aqua-ocean.reflex.run",
-                accent_color="indigo-400",
-                card_hover_class="gradient-border-card-sf",
+                url="https://scriptiq.reflex.run",
+                accent_color="#00F0FF",
+                card_hover_class="gradient-border-card-siq",
                 icon_svg='<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>'
             )
 
         # 6. Connected Pipeline Section
         with ui.element('section').classes('w-full max-w-[1200px] mt-28 px-6 flex flex-col items-center').props('id="pipeline"'):
             with ui.element('div').classes('w-full bg-gradient-to-b from-[#0e0f1d]/60 to-[#06060c]/40 border border-[#1e223c]/40 rounded-[36px] p-8 md:p-14 gap-12 flex flex-col relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)]'):
-                ui.element('div').classes('absolute w-[300px] h-[300px] rounded-full blur-[100px] pointer-events-none bg-indigo-500/5 -bottom-[10%] -left-[10%] z-0')
+                ui.element('div').classes('absolute w-[300px] h-[300px] rounded-full blur-[100px] pointer-events-none bg-[#00F0FF]/5 -bottom-[10%] -left-[10%] z-0')
                 
                 with ui.element('div').classes('w-full flex flex-col items-center text-center gap-2 relative z-10'):
-                    with ui.element('span').classes('text-[10px] font-extrabold text-rose-500 tracking-widest font-outfit uppercase'): ui.html('The Pre-Production Pipeline')
-                    with ui.element('h3').classes('text-3xl md:text-5xl font-black text-white font-outfit tracking-tight'): ui.html('Unified Script-to-Stage Workflow')
-                    with ui.element('p').classes('text-xs md:text-sm text-[#A3A0B3] max-w-[600px] mt-1.5 leading-relaxed font-light'): ui.html('ScriptWorks Suite bridges creative concepts and staging physics. Streamline pre-production in three continuous phases.')
+                    with ui.element('span').classes('text-[10px] font-extrabold text-[#00F0FF] tracking-widest font-outfit uppercase'): ui.html('The Unified Pipeline')
+                    with ui.element('h3').classes('text-3xl md:text-5xl font-black text-white font-outfit tracking-tight'): ui.html('Seamless Data Integration Flow')
+                    with ui.element('p').classes('text-xs md:text-sm text-[#A3A0B3] max-w-[600px] mt-1.5 leading-relaxed font-light'): ui.html('Bridge your script analysis directly with your pre-production research. Pass structured data from ScriptPulse straight into ScriptIQ.')
                 
                 with ui.element('div').classes('w-full gap-8 grid grid-cols-1 md:grid-cols-3 mt-4 relative z-10'):
-                    build_pipeline_card("01", "Narrative Profiling", "Run screenplay drafts through ScriptPulse to catalog characters, tag primary sets, and audit pacing spikes before drafting shot specs.", "rose-500")
-                    build_pipeline_card("02", "Scene Grounding", "Upload scene assets and target parameters to SceneForge. Instantly index manuals, stage history, and character background parameters.", "indigo-400")
-                    build_pipeline_card("03", "Staging & Shot Design", "Synchronize verified historical references with virtual camera coordinates, focal directions, and skybox lighting sets for crew exports.", "#FFBE1A")
+                    build_pipeline_card("01", "ScriptPulse Analysis", "Analyze your script draft to automatically map emotional spikes, segment pacing curves, and compute character dialogue frequency statistics.", "#9B51E0")
+                    build_pipeline_card("02", "ScriptIQ Knowledge Ingestion", "Upload production handbooks, historical guides, and character dossiers into ScriptIQ to build a securely isolated workspace context.", "#00F0FF")
+                    build_pipeline_card("03", "Aligned Cross-Querying", "Query ScriptIQ using the structured character profiles and pacing guidelines generated by ScriptPulse to ensure absolute historical accuracy.", "#FFBE1A")
 
         # 7. Features Grid Section
         with ui.element('section').classes('w-full max-w-[1200px] gap-12 flex flex-col mt-28 px-6 items-center').props('id="features"'):
             with ui.element('div').classes('w-full flex flex-col items-center text-center gap-2'):
-                with ui.element('span').classes('text-[10px] font-extrabold text-indigo-400 tracking-widest font-outfit uppercase'): ui.html('System Synchronization')
-                with ui.element('h3').classes('text-3xl md:text-5xl font-black text-white font-outfit tracking-tight'): ui.html('Why Connect Script & Staging?')
+                with ui.element('span').classes('text-[10px] font-extrabold text-[#00F0FF] tracking-widest font-outfit uppercase'): ui.html('System Synergy')
+                with ui.element('h3').classes('text-3xl md:text-5xl font-black text-white font-outfit tracking-tight'): ui.html('Why Connect ScriptPulse & ScriptIQ?')
             
             with ui.element('div').classes('w-full gap-6 grid grid-cols-1 md:grid-cols-2 mt-4'):
-                build_feature_card("grid_view", "Automated Set Sizing", "Parse scene settings (INT. Speakeasy vs EXT. Street) to calibrate scene dimensions, geometry limits, and background presets.")
-                build_feature_card("people", "Character Casting Link", "Feed character statistics (dialogue frequency, gender tags, age indicators) into virtual casting panels for speed drafting.")
-                build_feature_card("wb_sunny", "Contextual Lighting Setup", "Correlate screen descriptions ('late afternoon', 'rainy night') with primary staging shaders, weather profiles, and ambient filters.")
-                build_feature_card("videocam", "Shot-to-Text Mapping", "Bind staging cameras directly with lines of dialogue, generating active storyboards with automated view directions.")
+                build_feature_card("grid_view", "Pacing-to-Reference Mapping", "Correlate ScriptPulse attentional density peaks with ScriptIQ technical manuals to calculate specific set complexity and research demands.")
+                build_feature_card("people", "Character Fact Synchronization", "Sync ScriptPulse character statistics (dialogue frequency and appearance frequency) with ScriptIQ's Mem0 fact store for contextual prompts.")
+                build_feature_card("wb_sunny", "Mood & Scene Background Alignment", "Translate ScriptPulse tension indexes and emotional curves directly into ScriptIQ research prompts to search historical color palettes.")
+                build_feature_card("videocam", "Storyboard & Context Synthesis", "Correlate ScriptPulse scene-turn exposition metrics with ScriptIQ camera references to dynamically generate virtual shot options.")
 
         # 8. Footer Section
         with ui.element('footer').classes('w-full max-w-[1200px] mt-32 py-12 px-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6'):
-            with ui.element('span').classes('text-xs text-neutral-500 font-outfit'): ui.html('© 2026 SCRIPTWORKS SUITE. ALL RIGHTS RESERVED.')
+            with ui.element('span').classes('text-xs text-neutral-500 font-outfit'): ui.html('© 2026 SCRIPTSUITE. ALL RIGHTS RESERVED.')
             with ui.element('div').classes('flex gap-8 text-xs font-bold text-neutral-400 uppercase tracking-widest'):
                 ui.link('Privacy', '#').classes('text-neutral-400 hover:text-white no-underline transition')
                 ui.link('Terms', '#').classes('text-neutral-400 hover:text-white no-underline transition')

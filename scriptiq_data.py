@@ -1,4 +1,4 @@
-# Preloaded screenplay data for SceneForge RAG simulation
+# Preloaded screenplay data for ScriptIQ RAG simulation
 
 CHUNKS = [
     # --- INTERSTELLAR ---
