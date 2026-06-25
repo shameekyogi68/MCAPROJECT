@@ -498,7 +498,7 @@ def build_feature_card(icon_name: str, title: str, desc: str, app_type: str = "s
 
 # ── NiceGUI Main Page Route ──────────────────────────────────────────────────
 
-@ui.page('/')
+@ui.page('/', title='ScriptStudio - Story Analytics & Grounded RAG')
 def index():
     # Remove default padding to make it a fullscreen cinematic landing page
     ui.query('.nicegui-content').classes('relative overflow-x-hidden p-0 m-0 gap-0 w-full min-h-screen bg-[#05080F] text-[#E2E8F0]')
@@ -845,5 +845,5 @@ def index():
 port = int(os.environ.get("PORT", 8550))
 host = os.environ.get("HOST", "0.0.0.0" if os.environ.get("PORT") else "127.0.0.1")
 show_browser = not os.environ.get("PORT")
-ui.run(port=port, host=host, show=show_browser)
+ui.run(title='ScriptStudio', port=port, host=host, show=show_browser)
 
