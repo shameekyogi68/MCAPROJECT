@@ -1,4 +1,6 @@
 import os
+import threading
+import urllib.request
 from nicegui import ui
 
 # Head elements, fonts, icons, Lenis scroll, and custom CSS injection
@@ -403,6 +405,15 @@ ui.add_head_html("""
                     card.style.setProperty('--y', `${e.clientY - rect.top}px`);
                 });
             });
+
+            // Wake up background free-tier apps immediately
+            const wakeupUrls = [
+                "https://scriptpulse-app.streamlit.app",
+                "https://sceneforge-aqua-ocean.reflex.run"
+            ];
+            wakeupUrls.forEach(url => {
+                fetch(url, { mode: 'no-cors' }).catch(err => console.log('Wakeup ping failed:', err));
+            });
         }
         initAnimations();
     </script>
@@ -498,8 +509,24 @@ def build_feature_card(icon_name: str, title: str, desc: str, app_type: str = "s
 
 # ── NiceGUI Main Page Route ──────────────────────────────────────────────────
 
+def trigger_wakeups():
+    urls = [
+        "https://scriptpulse-app.streamlit.app",
+        "https://sceneforge-aqua-ocean.reflex.run"
+    ]
+    for url in urls:
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ScriptStudio/1.0'})
+            with urllib.request.urlopen(req, timeout=5) as response:
+                pass
+        except Exception as e:
+            print(f"Wakeup ping to {url} failed: {e}")
+
 @ui.page('/', title='ScriptStudio - Story Analytics & Grounded RAG')
 def index():
+    # Trigger background wakeup pings asynchronously on both client-side and server-side
+    threading.Thread(target=trigger_wakeups, daemon=True).start()
+    
     # Remove default padding to make it a fullscreen cinematic landing page
     ui.query('.nicegui-content').classes('relative overflow-x-hidden p-0 m-0 gap-0 w-full min-h-screen bg-[#05080F] text-[#E2E8F0]')
 
