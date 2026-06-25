@@ -521,7 +521,7 @@ def index():
                 with ui.element('div').classes('flex items-center gap-2.5 cursor-pointer').on('click', lambda: ui.run_javascript("window.scrollTo({top: 0, behavior: 'smooth'})")):
                     ui.element('span').classes('ti ti-apps text-[#00F0FF] text-3xl')
                     with ui.element('div').classes('flex flex-col'):
-                        with ui.element('span').classes('text-base font-black font-outfit text-white tracking-widest leading-none'): ui.html('SCRIPTSUITE')
+                        with ui.element('span').classes('text-base font-black font-outfit !text-white tracking-widest leading-none'): ui.html('SCRIPTSUITE')
                         with ui.element('span').classes('text-[9px] font-bold text-neutral-400 font-outfit tracking-widest mt-0.5 uppercase'): ui.html('Unified Portal')
                 
                 # Navigation Link list
@@ -529,14 +529,14 @@ def index():
                     ui.link('Pipeline', '#pipeline').classes('text-neutral-400 hover:text-white no-underline transition duration-200')
                     ui.link('Features', '#features').classes('text-neutral-400 hover:text-white no-underline transition duration-200')
                     ui.link('Launch ScriptPulse', 'https://scriptpulse-app.streamlit.app', new_tab=True) \
-                        .classes('bg-gradient-to-r from-[#9B51E0] to-[#A56DFF] text-white px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(155,81,224,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline font-outfit font-bold')
+                        .classes('bg-gradient-to-r from-[#9B51E0] to-[#A56DFF] !text-white px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(155,81,224,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline font-outfit font-bold')
                     ui.link('Launch ScriptIQ', 'https://sceneforge-aqua-ocean.reflex.run', new_tab=True) \
-                        .classes('bg-gradient-to-r from-[#00F0FF] to-[#0072FF] text-[#05080F] px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(0,240,255,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline font-sans font-bold')
+                        .classes('bg-gradient-to-r from-[#00F0FF] to-[#0072FF] !text-[#05080F] px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(0,240,255,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline font-sans font-bold')
 
         # 3. Hero Section
         with ui.element('section').classes('w-full max-w-[1000px] flex flex-col items-center text-center gap-6 py-20 md:py-32 px-6'):
             with ui.element('span').classes('hero-animate text-[10px] font-extrabold text-[#00F0FF] bg-[#00F0FF]/10 px-4 py-1.5 border border-[#00F0FF]/30 rounded-full font-outfit tracking-widest uppercase'): ui.html('ScriptPulse & ScriptIQ')
-            with ui.element('h1').classes('hero-animate text-6xl md:text-8xl font-black text-white tracking-tighter font-outfit leading-none mt-2'):
+            with ui.element('h1').classes('hero-animate text-6xl md:text-8xl font-black !text-white tracking-tighter font-outfit leading-none mt-2'):
                 ui.html('Story Analytics <br class="hidden sm:inline">& Grounded RAG.')
             with ui.element('h2').classes('hero-animate text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#9B51E0] via-[#A56DFF] to-[#00F0FF] tracking-tight font-outfit leading-none mt-2'): ui.html('Two Apps, One Workspace.')
             with ui.element('p').classes('hero-animate text-base md:text-lg text-[#A3A0B3] max-w-[700px] mt-6 leading-relaxed font-light'):
@@ -544,9 +544,9 @@ def index():
             
             with ui.element('div').classes('hero-animate flex flex-wrap gap-4 justify-center mt-4'):
                 ui.link('Launch ScriptPulse', 'https://scriptpulse-app.streamlit.app', new_tab=True) \
-                    .classes('bg-gradient-to-r from-[#9B51E0] to-[#A56DFF] text-white px-6 py-3 rounded-xl font-bold shadow-[0_0_30px_rgba(155,81,224,0.3)] hover:scale-[1.05] transition-all duration-300 no-underline font-outfit')
+                    .classes('bg-gradient-to-r from-[#9B51E0] to-[#A56DFF] !text-white px-6 py-3 rounded-xl font-bold shadow-[0_0_30px_rgba(155,81,224,0.3)] hover:scale-[1.05] transition-all duration-300 no-underline font-outfit')
                 ui.link('Launch ScriptIQ', 'https://sceneforge-aqua-ocean.reflex.run', new_tab=True) \
-                    .classes('bg-gradient-to-r from-[#00F0FF] to-[#0072FF] text-[#05080F] px-6 py-3 rounded-xl font-bold shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:scale-[1.05] transition-all duration-300 no-underline font-sans')
+                    .classes('bg-gradient-to-r from-[#00F0FF] to-[#0072FF] !text-[#05080F] px-6 py-3 rounded-xl font-bold shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:scale-[1.05] transition-all duration-300 no-underline font-sans')
 
         # 4. Interactive Showcase Dashboard (Stateful Panel)
         with ui.element('section').classes('w-full max-w-[1200px] px-6 mb-24 relative'):
