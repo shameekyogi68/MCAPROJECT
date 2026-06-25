@@ -518,8 +518,7 @@ def index():
         with ui.element('header').classes('w-full sticky top-0 backdrop-blur-xl bg-[#020205]/75 border-b border-white/5 py-4 px-6 z-50 flex justify-center'):
             with ui.element('div').classes('w-full max-w-[1200px] flex justify-between items-center'):
                 # Logo
-                with ui.element('div').classes('flex items-center gap-2.5 cursor-pointer').on('click', lambda: ui.run_javascript("window.scrollTo({top: 0, behavior: 'smooth'})")):
-                    ui.element('span').classes('ti ti-apps text-[#00F0FF] text-3xl')
+                with ui.element('div').classes('flex items-center cursor-pointer').on('click', lambda: ui.run_javascript("window.scrollTo({top: 0, behavior: 'smooth'})")):
                     with ui.element('div').classes('flex flex-col'):
                         with ui.element('span').classes('text-base font-black font-outfit !text-white tracking-widest leading-none'): ui.html('SCRIPTSTUDIO')
                         with ui.element('span').classes('text-[9px] font-bold text-neutral-400 font-outfit tracking-widest mt-0.5 uppercase'): ui.html('Unified Workspace')
