@@ -521,8 +521,8 @@ def index():
                 with ui.element('div').classes('flex items-center gap-2.5 cursor-pointer').on('click', lambda: ui.run_javascript("window.scrollTo({top: 0, behavior: 'smooth'})")):
                     ui.element('span').classes('ti ti-apps text-[#00F0FF] text-3xl')
                     with ui.element('div').classes('flex flex-col'):
-                        with ui.element('span').classes('text-base font-black font-outfit !text-white tracking-widest leading-none'): ui.html('SCRIPTSUITE')
-                        with ui.element('span').classes('text-[9px] font-bold text-neutral-400 font-outfit tracking-widest mt-0.5 uppercase'): ui.html('Unified Portal')
+                        with ui.element('span').classes('text-base font-black font-outfit !text-white tracking-widest leading-none'): ui.html('SCRIPTSTUDIO')
+                        with ui.element('span').classes('text-[9px] font-bold text-neutral-400 font-outfit tracking-widest mt-0.5 uppercase'): ui.html('Unified Workspace')
                 
                 # Navigation Link list
                 with ui.element('nav').classes('flex items-center gap-8 text-sm font-semibold text-neutral-400 font-outfit'):
@@ -836,7 +836,7 @@ def index():
 
         # 8. Footer Section
         with ui.element('footer').classes('w-full max-w-[1200px] mt-32 py-12 px-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6'):
-            with ui.element('span').classes('text-xs text-neutral-500 font-outfit'): ui.html('© 2026 SCRIPTSUITE. ALL RIGHTS RESERVED.')
+            with ui.element('span').classes('text-xs text-neutral-500 font-outfit'): ui.html('© 2026 SCRIPTSTUDIO. ALL RIGHTS RESERVED.')
             with ui.element('div').classes('flex gap-8 text-xs font-bold text-neutral-400 uppercase tracking-widest'):
                 ui.link('Privacy', '#').classes('text-neutral-400 hover:text-white no-underline transition')
                 ui.link('Terms', '#').classes('text-neutral-400 hover:text-white no-underline transition')
