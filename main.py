@@ -526,8 +526,8 @@ def index():
                 
                 # Navigation Link list
                 with ui.element('nav').classes('flex items-center gap-8 text-sm font-semibold text-neutral-400 font-outfit'):
-                    ui.link('Pipeline', '#pipeline').classes('text-neutral-400 hover:text-white no-underline transition duration-200')
-                    ui.link('Features', '#features').classes('text-neutral-400 hover:text-white no-underline transition duration-200')
+                    ui.link('Workflows', '#workflows').classes('text-neutral-400 hover:text-white no-underline transition duration-200')
+                    ui.link('Capabilities', '#capabilities').classes('text-neutral-400 hover:text-white no-underline transition duration-200')
                     ui.link('Launch ScriptPulse', 'https://scriptpulse-app.streamlit.app', new_tab=True) \
                         .classes('bg-gradient-to-r from-[#9B51E0] to-[#A56DFF] !text-white px-5 py-2 rounded-xl shadow-[0_0_20px_rgba(155,81,224,0.25)] hover:scale-[1.03] transition-all duration-300 no-underline font-outfit font-bold')
                     ui.link('Launch ScriptIQ', 'https://sceneforge-aqua-ocean.reflex.run', new_tab=True) \
@@ -788,7 +788,7 @@ def index():
             )
 
         # 6. App Workflows Section
-        with ui.element('section').classes('w-full max-w-[1200px] mt-28 px-6 flex flex-col items-center').props('id="pipeline"'):
+        with ui.element('section').classes('w-full max-w-[1200px] mt-28 px-6 flex flex-col items-center').props('id="workflows"'):
             with ui.element('div').classes('w-full bg-gradient-to-b from-[#0e0f1d]/60 to-[#06060c]/40 border border-[#1e223c]/40 rounded-[36px] p-8 md:p-14 gap-10 flex flex-col relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)]'):
                 ui.element('div').classes('absolute w-[300px] h-[300px] rounded-full blur-[100px] pointer-events-none bg-[#00F0FF]/5 -bottom-[10%] -left-[10%] z-0')
                 
@@ -820,7 +820,7 @@ def index():
                         build_pipeline_card("03", "Cross-Session Memory Store", "Automatically sync fact details across active prompts to eliminate context loss.", "#00FF88")
 
         # 7. Core Capabilities Section
-        with ui.element('section').classes('w-full max-w-[1200px] gap-12 flex flex-col mt-28 px-6 items-center').props('id="features"'):
+        with ui.element('section').classes('w-full max-w-[1200px] gap-12 flex flex-col mt-28 px-6 items-center').props('id="capabilities"'):
             with ui.element('div').classes('w-full flex flex-col items-center text-center gap-2'):
                 with ui.element('span').classes('text-[10px] font-extrabold text-[#00F0FF] tracking-widest font-outfit uppercase'): ui.html('Core Capabilities')
                 with ui.element('h3').classes('text-3xl md:text-5xl font-black text-white font-outfit tracking-tight'): ui.html('Why Choose ScriptPulse & ScriptIQ?')
